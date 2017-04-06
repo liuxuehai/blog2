@@ -3,7 +3,7 @@ server:
    
 spring:
    application: 
-       name: eureka.consumer
+       name: blog.consumer
     
 eureka:
    client:
@@ -12,7 +12,6 @@ eureka:
              defaultZone: http://localhost:8761/eureka/
    instance:
          prefer-ip-address: true
-   healthcheck:
-      enabled: true
+
         
  

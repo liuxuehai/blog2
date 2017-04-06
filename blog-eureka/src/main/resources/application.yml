@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: blog-server
+    
+---
+spring:
+    profile: server-01
+server:
+    port: 8761  
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: http://peer1.xujin.org:8763/eureka/
+    instance:
+        hostname: peer2.xujin.org
+       
+       
+---
+spring:
+    profile: server-02
+server:
+    port: 8762  
+eureka:
+    client:
+        serviceUrl:
+             defaultZone: http://peer2.xujin.org:8763/eureka/
+    instance:
+        hostname: peer1.xujin.org
+        

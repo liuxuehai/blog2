@@ -3,7 +3,7 @@ server:
    
 spring:
    application: 
-       name: blog.consumer
+       name: blog-management
    thymeleaf:
     mode: LEGACYHTML5
     

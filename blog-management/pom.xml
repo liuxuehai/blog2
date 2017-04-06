@@ -83,7 +83,7 @@
 		
 		<dependency>
 			<groupId>com.pong.blog</groupId>
-			<artifactId>blog-interface</artifactId>
+			<artifactId>blog-common</artifactId>
 			<version>${blog.version}</version>
 		</dependency>
 

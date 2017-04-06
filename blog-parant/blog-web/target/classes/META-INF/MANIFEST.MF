@@ -4,9 +4,8 @@ Implementation-Version: 1.0.0-SNAPSHOT
 Built-By: liuping
 Specification-Title: blog-web
 Implementation-Vendor-Id: com.pong.blog
-Class-Path: lib/blog-interface-1.0.0-SNAPSHOT.jar lib/blog-common-1.0.
- 0-SNAPSHOT.jar lib/blog-model-1.0.0-SNAPSHOT.jar lib/commons-lang-2.6
- .jar
+Class-Path: lib/blog-common-1.0.0-SNAPSHOT.jar lib/blog-model-1.0.0-SN
+ APSHOT.jar lib/commons-lang-2.6.jar
 Build-Jdk: 1.8.0_111
 Specification-Version: 1.0.0-SNAPSHOT
 Created-By: Maven Integration for Eclipse

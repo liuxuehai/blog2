@@ -1,4 +1,4 @@
-package com.pong.blog.management.controller;
+package com.pong.blog.consumer.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +13,6 @@ public class BlogController {
 	@GetMapping("/blog/index")
 	public String index() {
 		logger.info("首页=======");
-		return "44";
+		return "blog/44";
 	}
 }

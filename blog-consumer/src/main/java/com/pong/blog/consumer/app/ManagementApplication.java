@@ -11,7 +11,7 @@ import org.springframework.web.client.RestTemplate;
 @EnableDiscoveryClient
 @SpringBootApplication
 @ComponentScan(basePackages = "com.pong.blog.consumer")
-public class ConsumerApplication {
+public class ManagementApplication {
 
 	@Bean
 	@LoadBalanced
@@ -20,6 +20,6 @@ public class ConsumerApplication {
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(ConsumerApplication.class, args);
+		SpringApplication.run(ManagementApplication.class, args);
 	}
 }

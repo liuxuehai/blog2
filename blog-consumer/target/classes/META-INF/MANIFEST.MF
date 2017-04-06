@@ -1,11 +1,11 @@
 Manifest-Version: 1.0
-Implementation-Title: blog-consumer
+Implementation-Title: blog-management
 Implementation-Version: 1.0.0-SNAPSHOT
 Built-By: liuping
 Implementation-Vendor-Id: com.pong.blog
 Build-Jdk: 1.8.0_111
-Implementation-URL: http://projects.spring.io/spring-boot/blog-consume
- r/
+Implementation-URL: http://projects.spring.io/spring-boot/blog-managem
+ ent/
 Created-By: Maven Integration for Eclipse
 Implementation-Vendor: Pivotal Software, Inc.
 

@@ -7,7 +7,7 @@
 	</configSuffixes>
 	<enableImports><![CDATA[false]]></enableImports>
 	<configs>
-		<config>java:com.pong.blog.consumer.app.ManagementApplication</config>
+		<config>java:com.pong.blog.management.app.ManagementApplication</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>

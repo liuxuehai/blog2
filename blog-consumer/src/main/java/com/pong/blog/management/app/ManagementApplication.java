@@ -1,4 +1,4 @@
-package com.pong.blog.consumer.app;
+package com.pong.blog.management.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
 
 @EnableDiscoveryClient
 @SpringBootApplication
-@ComponentScan(basePackages = "com.pong.blog.consumer")
+@ComponentScan(basePackages = "com.pong.blog.management")
 public class ManagementApplication {
 
 	@Bean

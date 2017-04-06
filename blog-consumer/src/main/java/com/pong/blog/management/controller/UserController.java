@@ -1,4 +1,4 @@
-package com.pong.blog.consumer.controller;
+package com.pong.blog.management.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1281,6 +1281,6 @@
 		<module>blog-common</module>
 		<module>blog-interface</module>
 		<module>blog-web</module>
-		<module>blog-app</module>
+		
 	</modules>
 </project>

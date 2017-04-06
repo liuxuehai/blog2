@@ -1,4 +1,4 @@
-package com.pong.blog.provider;
+package com.pong.blog.provider.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 @EnableDiscoveryClient
 @SpringBootApplication
-@ComponentScan(basePackages = "com.pong.blog.mapper,com.pong.blog.controller,com.pong.blog.provider")
+@ComponentScan(basePackages = "com.pong.blog.mapper,com.pong.blog.controller,com.pong.blog.provider.app")
 public class ProviderApplication {
 
 	public static void main(String[] args) {

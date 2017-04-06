@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.pong.blog</groupId>
-	<artifactId>blog-consumer</artifactId>
+	<artifactId>blog-eureka</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 
 	<!-- 引入spring boot的依赖 -->
@@ -18,40 +18,7 @@
 		<commons.lang.version>2.6</commons.lang.version>
 		<fastjson.version>1.2.21</fastjson.version>
 		<mybatis.version>1.2.0</mybatis.version>
-		<lombok.version>1.16.6</lombok.version>
 	</properties>
-
-	<dependencies>
-
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-eureka</artifactId>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-ribbon</artifactId>
-		</dependency>
-
-		<!--表示为web工程 -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-
-		<!--暴露各种指标 -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>com.pong.blog</groupId>
-			<artifactId>blog-interface</artifactId>
-			<version>${blog.version}</version>
-		</dependency>
-
-	</dependencies>
 
 
 	<dependencyManagement>
@@ -65,6 +32,26 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+	
+	
+	<dependencies>
+		<!-- 引入Spring Cloud Eureka依赖 -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-eureka-server</artifactId>
+		</dependency>
+	</dependencies>
+	<repositories>
+		<repository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/libs-milestone</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
 
 
 	<build>
@@ -76,14 +63,5 @@
 		</plugins>
 	</build>
 
-	<repositories>
-		<repository>
-			<id>spring-milestones</id>
-			<name>Spring Milestones</name>
-			<url>https://repo.spring.io/libs-milestone</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
+
 </project>

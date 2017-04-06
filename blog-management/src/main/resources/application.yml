@@ -1,0 +1,19 @@
+server:
+   port: 9092
+   
+spring:
+   application: 
+       name: blog.consumer
+   thymeleaf:
+    mode: LEGACYHTML5
+    
+eureka:
+   client:
+         registerWithEureka: false 
+         serviceUrl:
+             defaultZone: http://localhost:8761/eureka/
+   instance:
+         prefer-ip-address: true
+
+        
+ 

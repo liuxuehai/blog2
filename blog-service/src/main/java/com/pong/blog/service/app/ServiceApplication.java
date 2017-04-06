@@ -8,9 +8,9 @@ import org.springframework.context.annotation.ComponentScan;
 @EnableDiscoveryClient
 @SpringBootApplication
 @ComponentScan(basePackages = "com.pong.blog.service.mapper,com.pong.blog.service.controller,com.pong.blog.service.app")
-public class ProviderApplication {
+public class ServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ProviderApplication.class, args);
+		SpringApplication.run(ServiceApplication.class, args);
 	}
 }

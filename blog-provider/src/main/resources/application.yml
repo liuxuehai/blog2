@@ -1,6 +1,6 @@
 spring:
    application: 
-       name: blog.provider
+       name: blog-service
    datasource:
        driverClassName: com.mysql.jdbc.Driver
        url: jdbc:mysql://172.20.17.80/blog?characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useSSL=false
@@ -12,7 +12,7 @@ eureka:
          serviceUrl:
              defaultZone: http://localhost:8761/eureka/
    instance:
-         appname: blog.provider
+         appname: blog-service
          prefer-ip-address: true
          
        
@@ -24,13 +24,13 @@ mybatis:
  
 ---
 spring:
-    profiles: provider-01
+    profiles: service-01
 server:
     port: 9090 
 
 ---
 spring:
-    profiles: provider-02
+    profiles: service-02
 server:
     port: 9091 
     

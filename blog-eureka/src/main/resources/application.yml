@@ -1,10 +1,10 @@
 spring:
   application:
-    name: blog-server
+    name: blog-eureka
     
 ---
 spring:
-    profiles: server-01
+    profiles: eureka-01
 server:
     port: 8761  
 eureka:
@@ -17,7 +17,7 @@ eureka:
        
 ---
 spring:
-    profiles: server-02
+    profiles: eureka-02
 server:
     port: 8762  
 eureka:

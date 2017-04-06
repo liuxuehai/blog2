@@ -1,4 +1,4 @@
-package com.pong.blog.provider.app;
+package com.pong.blog.service.app;
 
 import java.util.Properties;
 

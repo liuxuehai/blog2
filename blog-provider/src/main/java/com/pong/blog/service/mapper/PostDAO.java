@@ -1,4 +1,4 @@
-package com.pong.blog.mapper;
+package com.pong.blog.service.mapper;
 
 import com.pong.blog.model.Post;
 import com.pong.blog.model.PostWithBLOBs;

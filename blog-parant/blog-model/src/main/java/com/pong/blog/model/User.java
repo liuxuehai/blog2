@@ -1,6 +1,7 @@
 package com.pong.blog.model;
 
 import java.util.Date;
+
 import com.blog.model.base.BaseObject;
 
 public class User extends BaseObject {
@@ -8,19 +9,19 @@ public class User extends BaseObject {
 
     private Long id;
 
-    private String userLogin;
+    private String login;
 
-    private String userPass;
+    private String pass;
 
-    private String userNicename;
+    private String nickName;
 
-    private String userEmail;
+    private String email;
 
-    private String userUrl;
+    private String url;
 
-    private Date userRegistered;
+    private Date registered;
 
-    private Integer userStatus;
+    private Integer status;
 
     private String displayName;
 
@@ -36,60 +37,60 @@ public class User extends BaseObject {
         this.id = id;
     }
 
-    public String getUserLogin() {
-        return userLogin;
+    public String getLogin() {
+        return login;
     }
 
-    public void setUserLogin(String userLogin) {
-        this.userLogin = userLogin == null ? null : userLogin.trim();
+    public void setLogin(String login) {
+        this.login = login == null ? null : login.trim();
     }
 
-    public String getUserPass() {
-        return userPass;
+    public String getPass() {
+        return pass;
     }
 
-    public void setUserPass(String userPass) {
-        this.userPass = userPass == null ? null : userPass.trim();
+    public void setPass(String pass) {
+        this.pass = pass == null ? null : pass.trim();
     }
 
-    public String getUserNicename() {
-        return userNicename;
+    public String getNickName() {
+        return nickName;
     }
 
-    public void setUserNicename(String userNicename) {
-        this.userNicename = userNicename == null ? null : userNicename.trim();
+    public void setNickName(String nickName) {
+        this.nickName = nickName == null ? null : nickName.trim();
     }
 
-    public String getUserEmail() {
-        return userEmail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail == null ? null : userEmail.trim();
+    public void setEmail(String email) {
+        this.email = email == null ? null : email.trim();
     }
 
-    public String getUserUrl() {
-        return userUrl;
+    public String getUrl() {
+        return url;
     }
 
-    public void setUserUrl(String userUrl) {
-        this.userUrl = userUrl == null ? null : userUrl.trim();
+    public void setUrl(String url) {
+        this.url = url == null ? null : url.trim();
     }
 
-    public Date getUserRegistered() {
-        return userRegistered;
+    public Date getRegistered() {
+        return registered;
     }
 
-    public void setUserRegistered(Date userRegistered) {
-        this.userRegistered = userRegistered;
+    public void setRegistered(Date registered) {
+        this.registered = registered;
     }
 
-    public Integer getUserStatus() {
-        return userStatus;
+    public Integer getStatus() {
+        return status;
     }
 
-    public void setUserStatus(Integer userStatus) {
-        this.userStatus = userStatus;
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     public String getDisplayName() {

@@ -1,158 +1,169 @@
 package com.pong.blog.model;
 
 import java.util.Date;
+
 import com.blog.model.base.BaseObject;
 
 public class Post extends BaseObject {
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    private Long id;
+	private Long id;
 
-    private Long author;
+	private Long author;
+	
+	private String context;
 
-    private Date postDate;
+    private String conextEng;
 
-    private Integer postStatus;
+	private Date postDate;
 
-    private Integer commentStatus;
+	private Integer status;
 
-    private Integer pingStatus;
+	private Date postModified;
 
-    private Date postModified;
+	private Long postParent;
 
-    private Long postParent;
+	private String category;
+	
+	private String  title;
 
-    private String guid;
+	private String guid;
 
-    private Integer menuOrder;
+	private String postType;
 
-    private String postType;
+	private String postMimeType;
 
-    private String postMimeType;
+	private Long commentCount;
 
-    private Long commentCount;
+	private Date createTime;
 
-    private Date createTime;
+	private Date updateTime;
 
-    private Date updateTime;
+	public Long getId() {
+		return id;
+	}
 
-    public Long getId() {
-        return id;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public Long getAuthor() {
+		return author;
+	}
 
-    public Long getAuthor() {
-        return author;
-    }
+	public void setAuthor(Long author) {
+		this.author = author;
+	}
 
-    public void setAuthor(Long author) {
-        this.author = author;
-    }
+	public Date getPostDate() {
+		return postDate;
+	}
 
-    public Date getPostDate() {
-        return postDate;
-    }
+	public void setPostDate(Date postDate) {
+		this.postDate = postDate;
+	}
 
-    public void setPostDate(Date postDate) {
-        this.postDate = postDate;
-    }
+	public Integer getStatus() {
+		return status;
+	}
 
-    public Integer getPostStatus() {
-        return postStatus;
-    }
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
 
-    public void setPostStatus(Integer postStatus) {
-        this.postStatus = postStatus;
-    }
+	public Date getPostModified() {
+		return postModified;
+	}
 
-    public Integer getCommentStatus() {
-        return commentStatus;
-    }
+	public void setPostModified(Date postModified) {
+		this.postModified = postModified;
+	}
 
-    public void setCommentStatus(Integer commentStatus) {
-        this.commentStatus = commentStatus;
-    }
+	public Long getPostParent() {
+		return postParent;
+	}
 
-    public Integer getPingStatus() {
-        return pingStatus;
-    }
+	public void setPostParent(Long postParent) {
+		this.postParent = postParent;
+	}
 
-    public void setPingStatus(Integer pingStatus) {
-        this.pingStatus = pingStatus;
-    }
+	public String getCategory() {
+		return category;
+	}
 
-    public Date getPostModified() {
-        return postModified;
-    }
+	public void setCategory(String category) {
+		this.category = category == null ? null : category.trim();
+	}
 
-    public void setPostModified(Date postModified) {
-        this.postModified = postModified;
-    }
+	public String getTitle() {
+		return title;
+	}
 
-    public Long getPostParent() {
-        return postParent;
-    }
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
-    public void setPostParent(Long postParent) {
-        this.postParent = postParent;
-    }
+	public String getGuid() {
+		return guid;
+	}
 
-    public String getGuid() {
-        return guid;
-    }
+	public void setGuid(String guid) {
+		this.guid = guid == null ? null : guid.trim();
+	}
 
-    public void setGuid(String guid) {
-        this.guid = guid == null ? null : guid.trim();
-    }
+	public String getPostType() {
+		return postType;
+	}
 
-    public Integer getMenuOrder() {
-        return menuOrder;
-    }
+	public void setPostType(String postType) {
+		this.postType = postType == null ? null : postType.trim();
+	}
 
-    public void setMenuOrder(Integer menuOrder) {
-        this.menuOrder = menuOrder;
-    }
+	public String getContext() {
+		return context;
+	}
 
-    public String getPostType() {
-        return postType;
-    }
+	public void setContext(String context) {
+		this.context = context;
+	}
 
-    public void setPostType(String postType) {
-        this.postType = postType == null ? null : postType.trim();
-    }
+	public String getConextEng() {
+		return conextEng;
+	}
 
-    public String getPostMimeType() {
-        return postMimeType;
-    }
+	public void setConextEng(String conextEng) {
+		this.conextEng = conextEng;
+	}
 
-    public void setPostMimeType(String postMimeType) {
-        this.postMimeType = postMimeType == null ? null : postMimeType.trim();
-    }
+	public String getPostMimeType() {
+		return postMimeType;
+	}
 
-    public Long getCommentCount() {
-        return commentCount;
-    }
+	public void setPostMimeType(String postMimeType) {
+		this.postMimeType = postMimeType == null ? null : postMimeType.trim();
+	}
 
-    public void setCommentCount(Long commentCount) {
-        this.commentCount = commentCount;
-    }
+	public Long getCommentCount() {
+		return commentCount;
+	}
 
-    public Date getCreateTime() {
-        return createTime;
-    }
+	public void setCommentCount(Long commentCount) {
+		this.commentCount = commentCount;
+	}
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
+	public Date getCreateTime() {
+		return createTime;
+	}
 
-    public Date getUpdateTime() {
-        return updateTime;
-    }
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
 
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
-    }
+	public Date getUpdateTime() {
+		return updateTime;
+	}
+
+	public void setUpdateTime(Date updateTime) {
+		this.updateTime = updateTime;
+	}
 }

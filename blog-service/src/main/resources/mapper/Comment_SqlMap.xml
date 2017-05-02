@@ -4,29 +4,26 @@
   <resultMap id="BaseResultMap" type="com.pong.blog.model.Comment" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="post_id" property="postId" jdbcType="BIGINT" />
-    <result column="comment_author" property="commentAuthor" jdbcType="VARCHAR" />
-    <result column="comment_author_email" property="commentAuthorEmail" jdbcType="VARCHAR" />
-    <result column="comment_author_url" property="commentAuthorUrl" jdbcType="VARCHAR" />
-    <result column="comment_author_ip" property="commentAuthorIp" jdbcType="VARCHAR" />
-    <result column="comment_date" property="commentDate" jdbcType="TIMESTAMP" />
-    <result column="comment_approved" property="commentApproved" jdbcType="VARCHAR" />
-    <result column="comment_agent" property="commentAgent" jdbcType="VARCHAR" />
-    <result column="comment_type" property="commentType" jdbcType="VARCHAR" />
-    <result column="comment_parent" property="commentParent" jdbcType="BIGINT" />
+    <result column="author_id" property="authorId" jdbcType="BIGINT" />
+    <result column="ip" property="ip" jdbcType="VARCHAR" />
+    <result column="date" property="date" jdbcType="TIMESTAMP" />
+    <result column="agent" property="agent" jdbcType="VARCHAR" />
+    <result column="approved" property="approved" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="parent" property="parent" jdbcType="BIGINT" />
     <result column="user_id" property="userId" jdbcType="BIGINT" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.pong.blog.model.Comment" extends="BaseResultMap" >
-    <result column="comment_context" property="commentContext" jdbcType="LONGVARCHAR" />
+    <result column="context" property="context" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, post_id, comment_author, comment_author_email, comment_author_url, comment_author_ip, 
-    comment_date, comment_approved, comment_agent, comment_type, comment_parent, user_id, 
-    create_time, update_time
+    id, post_id, author_id, ip, date, agent, approved, type, parent, user_id, create_time, 
+    update_time
   </sql>
   <sql id="Blob_Column_List" >
-    comment_context
+    context
   </sql>
   <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
     select 
@@ -37,49 +34,43 @@
     where id = #{id,jdbcType=BIGINT}
   </select>
   <insert id="insert" parameterType="com.pong.blog.model.Comment" >
-    insert into comments (id, post_id, comment_author, 
-      comment_author_email, comment_author_url, comment_author_ip, 
-      comment_date, comment_approved, comment_agent, 
-      comment_type, comment_parent, user_id, 
-      create_time, update_time, comment_context
-      )
-    values (#{id,jdbcType=BIGINT}, #{postId,jdbcType=BIGINT}, #{commentAuthor,jdbcType=VARCHAR}, 
-      #{commentAuthorEmail,jdbcType=VARCHAR}, #{commentAuthorUrl,jdbcType=VARCHAR}, #{commentAuthorIp,jdbcType=VARCHAR}, 
-      #{commentDate,jdbcType=TIMESTAMP}, #{commentApproved,jdbcType=VARCHAR}, #{commentAgent,jdbcType=VARCHAR}, 
-      #{commentType,jdbcType=VARCHAR}, #{commentParent,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{commentContext,jdbcType=LONGVARCHAR}
-      )
+    insert into comments (post_id, author_id, 
+      ip, date, agent, 
+      approved, type, parent, 
+      user_id, create_time, update_time, 
+      context)
+    values ( #{postId,jdbcType=BIGINT}, #{authorId,jdbcType=BIGINT}, 
+      #{ip,jdbcType=VARCHAR}, #{date,jdbcType=TIMESTAMP}, #{agent,jdbcType=VARCHAR}, 
+      #{approved,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{parent,jdbcType=BIGINT}, 
+      #{userId,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{context,jdbcType=LONGVARCHAR})
   </insert>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.pong.blog.model.Comment" >
     update comments
     set post_id = #{postId,jdbcType=BIGINT},
-      comment_author = #{commentAuthor,jdbcType=VARCHAR},
-      comment_author_email = #{commentAuthorEmail,jdbcType=VARCHAR},
-      comment_author_url = #{commentAuthorUrl,jdbcType=VARCHAR},
-      comment_author_ip = #{commentAuthorIp,jdbcType=VARCHAR},
-      comment_date = #{commentDate,jdbcType=TIMESTAMP},
-      comment_approved = #{commentApproved,jdbcType=VARCHAR},
-      comment_agent = #{commentAgent,jdbcType=VARCHAR},
-      comment_type = #{commentType,jdbcType=VARCHAR},
-      comment_parent = #{commentParent,jdbcType=BIGINT},
+      author_id = #{authorId,jdbcType=BIGINT},
+      ip = #{ip,jdbcType=VARCHAR},
+      date = #{date,jdbcType=TIMESTAMP},
+      agent = #{agent,jdbcType=VARCHAR},
+      approved = #{approved,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      parent = #{parent,jdbcType=BIGINT},
       user_id = #{userId,jdbcType=BIGINT},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
-      comment_context = #{commentContext,jdbcType=LONGVARCHAR}
+      context = #{context,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.pong.blog.model.Comment" >
     update comments
     set post_id = #{postId,jdbcType=BIGINT},
-      comment_author = #{commentAuthor,jdbcType=VARCHAR},
-      comment_author_email = #{commentAuthorEmail,jdbcType=VARCHAR},
-      comment_author_url = #{commentAuthorUrl,jdbcType=VARCHAR},
-      comment_author_ip = #{commentAuthorIp,jdbcType=VARCHAR},
-      comment_date = #{commentDate,jdbcType=TIMESTAMP},
-      comment_approved = #{commentApproved,jdbcType=VARCHAR},
-      comment_agent = #{commentAgent,jdbcType=VARCHAR},
-      comment_type = #{commentType,jdbcType=VARCHAR},
-      comment_parent = #{commentParent,jdbcType=BIGINT},
+      author_id = #{authorId,jdbcType=BIGINT},
+      ip = #{ip,jdbcType=VARCHAR},
+      date = #{date,jdbcType=TIMESTAMP},
+      agent = #{agent,jdbcType=VARCHAR},
+      approved = #{approved,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      parent = #{parent,jdbcType=BIGINT},
       user_id = #{userId,jdbcType=BIGINT},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP}

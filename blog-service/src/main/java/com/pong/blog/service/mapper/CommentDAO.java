@@ -1,10 +1,9 @@
 package com.pong.blog.service.mapper;
 
 import com.pong.blog.model.Comment;
+import org.springframework.stereotype.Repository;
 
-import org.apache.ibatis.annotations.Mapper;
-
-@Mapper 
+@Repository
 public interface CommentDAO {
     int insert(Comment record);
 

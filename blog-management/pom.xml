@@ -16,16 +16,16 @@
 		<blog.version>1.0.0-SNAPSHOT</blog.version>
 		<java.version>1.8</java.version>
 		<commons.lang.version>2.6</commons.lang.version>
+		<fastjson.version>1.2.31</fastjson.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
 
 
 	<dependencies>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-freemarker</artifactId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 			<exclusions>
 				<exclusion>
 					<groupId>org.springframework.boot</groupId>
@@ -37,22 +37,6 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 		</dependency>
-		
-		<dependency>
-			<groupId>com.github.mxab.thymeleaf.extras</groupId>
-			<artifactId>thymeleaf-extras-data-attribute</artifactId>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.thymeleaf.extras</groupId>
-			<artifactId>thymeleaf-extras-springsecurity4</artifactId>
-		</dependency>
-		
-		<dependency>
-			<groupId>net.sourceforge.nekohtml</groupId>
-			<artifactId>nekohtml</artifactId>
-		</dependency>
-		
 
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
@@ -75,18 +59,22 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-log4j2</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.pong.blog</groupId>
 			<artifactId>blog-common</artifactId>
 			<version>${blog.version}</version>
 		</dependency>
-
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>${fastjson.version}</version>
+		</dependency>
 		<!-- test -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

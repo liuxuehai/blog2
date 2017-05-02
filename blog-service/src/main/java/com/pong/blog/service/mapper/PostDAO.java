@@ -1,17 +1,28 @@
 package com.pong.blog.service.mapper;
 
+import com.pong.blog.dto.BlogDto;
 import com.pong.blog.model.Post;
-import com.pong.blog.model.PostWithBLOBs;
 
-import org.apache.ibatis.annotations.Mapper;
+import java.util.List;
 
-@Mapper 
+import org.springframework.stereotype.Repository;
+
+@Repository
 public interface PostDAO {
-    int insert(PostWithBLOBs record);
-
-    PostWithBLOBs selectByPrimaryKey(Long id);
-
-    int updateByPrimaryKeyWithBLOBs(PostWithBLOBs record);
+    
+    int insert(Post record);
 
     int updateByPrimaryKey(Post record);
+
+	int count(BlogDto dto);
+
+	List<Post> list(BlogDto dto);
+	
+	
+	Post selectByPrimaryKey(Long id);
+
+	int batchApprove(List<String> approve);
+	
+	int batchDelete(List<String> delete);
+	
 }

@@ -3,20 +3,20 @@
 <mapper namespace="com.pong.blog.service.mapper.UserDAO" >
   <resultMap id="BaseResultMap" type="com.pong.blog.model.User" >
     <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="user_login" property="userLogin" jdbcType="VARCHAR" />
-    <result column="user_pass" property="userPass" jdbcType="VARCHAR" />
-    <result column="user_nicename" property="userNicename" jdbcType="VARCHAR" />
-    <result column="user_email" property="userEmail" jdbcType="VARCHAR" />
-    <result column="user_url" property="userUrl" jdbcType="VARCHAR" />
-    <result column="user_registered" property="userRegistered" jdbcType="TIMESTAMP" />
-    <result column="user_status" property="userStatus" jdbcType="INTEGER" />
+    <result column="login" property="login" jdbcType="VARCHAR" />
+    <result column="pass" property="pass" jdbcType="VARCHAR" />
+    <result column="nick_name" property="nickName" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="registered" property="registered" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="INTEGER" />
     <result column="display_name" property="displayName" jdbcType="VARCHAR" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, user_login, user_pass, user_nicename, user_email, user_url, user_registered, 
-    user_status, display_name, create_time, update_time
+    id, login, pass, nick_name, email, url, registered, status, display_name, create_time, 
+    update_time
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
@@ -25,24 +25,24 @@
     where id = #{id,jdbcType=BIGINT}
   </select>
   <insert id="insert" parameterType="com.pong.blog.model.User" >
-    insert into users (id, user_login, user_pass, 
-      user_nicename, user_email, user_url, 
-      user_registered, user_status, display_name, 
+    insert into users (login, pass, 
+      nick_name, email, url, 
+      registered, status, display_name, 
       create_time, update_time)
-    values (#{id,jdbcType=BIGINT}, #{userLogin,jdbcType=VARCHAR}, #{userPass,jdbcType=VARCHAR}, 
-      #{userNicename,jdbcType=VARCHAR}, #{userEmail,jdbcType=VARCHAR}, #{userUrl,jdbcType=VARCHAR}, 
-      #{userRegistered,jdbcType=TIMESTAMP}, #{userStatus,jdbcType=INTEGER}, #{displayName,jdbcType=VARCHAR}, 
+    values ( #{login,jdbcType=VARCHAR}, #{pass,jdbcType=VARCHAR}, 
+      #{nickName,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, 
+      #{registered,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, #{displayName,jdbcType=VARCHAR}, 
       #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.pong.blog.model.User" >
     update users
-    set user_login = #{userLogin,jdbcType=VARCHAR},
-      user_pass = #{userPass,jdbcType=VARCHAR},
-      user_nicename = #{userNicename,jdbcType=VARCHAR},
-      user_email = #{userEmail,jdbcType=VARCHAR},
-      user_url = #{userUrl,jdbcType=VARCHAR},
-      user_registered = #{userRegistered,jdbcType=TIMESTAMP},
-      user_status = #{userStatus,jdbcType=INTEGER},
+    set login = #{login,jdbcType=VARCHAR},
+      pass = #{pass,jdbcType=VARCHAR},
+      nick_name = #{nickName,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      registered = #{registered,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
       display_name = #{displayName,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP}

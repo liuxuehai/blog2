@@ -1,17 +1,36 @@
-<html   xmlns:th="http://www.thymeleaf.org"
-        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-        layout:decorator="layout">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
 <head>
-    <title>Error</title>
+<title>Error</title>
 </head>
 <body>
-<h1 layout:fragment="header">Unexpected Error</h1>
+	<div layout:fragment="content" class="admin-content-body">
+	    <div class="am-cf am-padding am-padding-bottom-0">
+          <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">404</strong> / <small>That’s an error</small></div>
+        </div>
+		<div class="am-g">
+			<div class="am-u-sm-12">
+				<h2 class="am-text-center am-text-xxxl am-margin-top-lg">404.
+					Not Found</h2>
+				<p class="am-text-center">没有找到你要的页面</p>
+				<pre class="page-404">          .----.
+       _.'__    `.
+   .--($)($$)---/#\
+ .' @          /###\
+ :         ,   #####
+  `-..__.-' _.-\###/
+        `;_:    `"'
+      .'"""""`.
+     /,  ya ,\\
+    //  404!  \\
+    `-._______.-'
+    ___`. | .'___
+   (______|______)
+   </pre>
+			</div>
+		</div>
 
-<div layout:fragment="content" class="container">
-  <div class="main-body--wrapper">
-    There was an unexpected error on the server: <span th:text="${error}">Error</span> (<span th:text="${status}">888</span>).
-  </div>
-</div>
-
+	</div>
 </body>
 </html>

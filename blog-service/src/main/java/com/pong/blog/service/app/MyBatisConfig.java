@@ -21,7 +21,7 @@ import com.alibaba.druid.pool.DruidDataSourceFactory;
  * 2）创建SqlSessionFactory
  */
 @Configuration    //该注解类似于spring配置文件
-@MapperScan(basePackages="com.pong.blog.mapper")
+@MapperScan(basePackages="com.pong.blog.service.mapper")
 public class MyBatisConfig {
     
     @Autowired

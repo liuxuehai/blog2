@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pong.blog.service.mapper.CategoryDAO" >
+  <resultMap id="BaseResultMap" type="com.pong.blog.model.Category" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="category" property="category" jdbcType="VARCHAR" />
+    <result column="post_id" property="postId" jdbcType="BIGINT" />
+    <result column="order" property="order" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, category, post_id, order, create_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from category
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <insert id="insert" parameterType="com.pong.blog.model.Category" >
+    insert into category (category, post_id, 
+      order, create_time)
+    values (#{category,jdbcType=VARCHAR}, #{postId,jdbcType=BIGINT}, 
+      #{order,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.pong.blog.model.Category" >
+    update category
+    set category = #{category,jdbcType=VARCHAR},
+      post_id = #{postId,jdbcType=BIGINT},
+      order = #{order,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

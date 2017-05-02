@@ -1,12 +1,25 @@
 server:
    port: 9092
+
+service:
+    blog-url: http://blog-service/
+   
    
 spring:
    application: 
        name: blog-management
    thymeleaf:
-    mode: LEGACYHTML5
-    
+       mode: HTML5
+       prefix: classpath:/templates/
+       suffix: .html 
+       encoding: UTF-8 
+       content-type: text/html  
+       cache: false
+   http:
+       encoding:
+             force: true
+             charset: utf-8
+             enabled: true
 eureka:
    client:
          registerWithEureka: false 

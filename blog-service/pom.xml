@@ -15,7 +15,7 @@
 		<blog.version>1.0.0-SNAPSHOT</blog.version>
 		<java.version>1.8</java.version>
 		<commons.lang.version>2.6</commons.lang.version>
-		<fastjson.version>1.2.21</fastjson.version>
+		<fastjson.version>1.2.31</fastjson.version>
 		<mybatis.version>1.2.0</mybatis.version>
 		<lombok.version>1.16.6</lombok.version>
 	</properties>
@@ -60,6 +60,12 @@
 			<groupId>com.alibaba</groupId>
 			<artifactId>druid</artifactId>
 			<version>1.0.29</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>${fastjson.version}</version>
 		</dependency>
 		
 		<dependency>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="layout">
+<!-- layout文件路径-->
+<head>
+<meta charset="utf-8" />
+<title>首页</title>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+
+<body>
+	<div layout:fragment="content" class="admin-content-body">
+		<div class="am-cf am-padding am-padding-bottom-0">
+			<div class="am-fl am-cf">
+				<strong class="am-text-primary am-text-lg">
+				     <a href="/blog/index">Blog</a>
+				 </strong> / 
+				   <small th:if="${post == null}" >新增</small>
+				   <small th:if="${post !=  null}" >修改</small>
+			</div>
+		</div>
+		<hr />
+		<div class="am-g">
+			<form action="/blog/edit" class="am-form" id="blog" method="post" th:object="${post}">
+			    <input type="hidden"  name ="id"  th:value="*{id}"  />
+				<fieldset>
+					 <div class="am-form-group">
+						  <label for="doc-vld-name-2-1">文章标题：</label> 
+						  <input type="text" id="doc-vld-name-2-1" name ="title" minlength="3" th:value="*{title}" 
+						   placeholder="输入文章标题（至少 3 个字符）" required="required" />
+					 </div>
+					 <div class="am-form-group">
+						 <label for="doc-vld-email-2-1">文章类型：</label>
+						 <input type="text" name ="category" id="doc-vld-email-2-1" minlength="3"
+							placeholder="输入文章类型（至少 3 个字符）" required="required"   th:value="*{category}" />
+					 </div>
+					 <div class="am-form-group">
+                         <label for="myue">文章内容：</label>
+                         <textarea class="am-validate" name="context" id="myue" required="required"  th:text="*{context}" ></textarea>
+                     </div>
+					<button class="am-btn am-btn-secondary" type="submit" id="submit">提交</button>
+				</fieldset>
+			</form>
+		</div>
+
+		
+		<script src="../app/js/blog/edit.js" th:src="@{/app/js/blog/edit.js}"></script>
+		<script src="http://ueditor.baidu.com/ueditor/ueditor.config.js"></script>
+        <script src="http://ueditor.baidu.com/ueditor/ueditor.all.js"></script>
+	</div>
+
+</body>
+</html>
+
+

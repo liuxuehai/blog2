@@ -1,92 +1,136 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.pong.blog.service.mapper.PostDAO" >
-  <resultMap id="BaseResultMap" type="com.pong.blog.model.Post" >
-    <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="author" property="author" jdbcType="BIGINT" />
-    <result column="post_date" property="postDate" jdbcType="TIMESTAMP" />
-    <result column="post_status" property="postStatus" jdbcType="INTEGER" />
-    <result column="comment_status" property="commentStatus" jdbcType="INTEGER" />
-    <result column="ping_status" property="pingStatus" jdbcType="INTEGER" />
-    <result column="post_modified" property="postModified" jdbcType="TIMESTAMP" />
-    <result column="post_parent" property="postParent" jdbcType="BIGINT" />
-    <result column="guid" property="guid" jdbcType="VARCHAR" />
-    <result column="menu_order" property="menuOrder" jdbcType="INTEGER" />
-    <result column="post_type" property="postType" jdbcType="VARCHAR" />
-    <result column="post_mime_type" property="postMimeType" jdbcType="VARCHAR" />
-    <result column="comment_count" property="commentCount" jdbcType="BIGINT" />
-    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
-  </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.pong.blog.model.PostWithBLOBs" extends="BaseResultMap" >
-    <result column="post_context" property="postContext" jdbcType="LONGVARCHAR" />
-    <result column="post_conext_eng" property="postConextEng" jdbcType="LONGVARCHAR" />
-    <result column="post_title" property="postTitle" jdbcType="LONGVARCHAR" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    id, author, post_date, post_status, comment_status, ping_status, post_modified, post_parent, 
-    guid, menu_order, post_type, post_mime_type, comment_count, create_time, update_time
-  </sql>
-  <sql id="Blob_Column_List" >
-    post_context, post_conext_eng, post_title
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
-    select 
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from posts
-    where id = #{id,jdbcType=BIGINT}
-  </select>
-  <insert id="insert" parameterType="com.pong.blog.model.PostWithBLOBs" >
-    insert into posts (author, post_date, 
-      post_status, comment_status, ping_status, 
-      post_modified, post_parent, guid, 
-      menu_order, post_type, post_mime_type, 
-      comment_count, create_time, update_time, 
-      post_context, post_conext_eng, post_title
-      )
-    values ( #{author,jdbcType=BIGINT}, #{postDate,jdbcType=TIMESTAMP}, 
-      #{postStatus,jdbcType=INTEGER}, #{commentStatus,jdbcType=INTEGER}, #{pingStatus,jdbcType=INTEGER}, 
-      #{postModified,jdbcType=TIMESTAMP}, #{postParent,jdbcType=BIGINT}, #{guid,jdbcType=VARCHAR}, 
-      #{menuOrder,jdbcType=INTEGER}, #{postType,jdbcType=VARCHAR}, #{postMimeType,jdbcType=VARCHAR}, 
-      #{commentCount,jdbcType=BIGINT}, now(), #{updateTime,jdbcType=TIMESTAMP}, 
-      #{postContext,jdbcType=LONGVARCHAR}, #{postConextEng,jdbcType=LONGVARCHAR}, #{postTitle,jdbcType=LONGVARCHAR}
-      )
-  </insert>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.pong.blog.model.PostWithBLOBs" >
-    update posts
-    set author = #{author,jdbcType=BIGINT},
-      post_date = #{postDate,jdbcType=TIMESTAMP},
-      post_status = #{postStatus,jdbcType=INTEGER},
-      comment_status = #{commentStatus,jdbcType=INTEGER},
-      ping_status = #{pingStatus,jdbcType=INTEGER},
-      post_modified = #{postModified,jdbcType=TIMESTAMP},
-      post_parent = #{postParent,jdbcType=BIGINT},
-      guid = #{guid,jdbcType=VARCHAR},
-      menu_order = #{menuOrder,jdbcType=INTEGER},
-      post_type = #{postType,jdbcType=VARCHAR},
-      post_mime_type = #{postMimeType,jdbcType=VARCHAR},
-      comment_count = #{commentCount,jdbcType=BIGINT},
-      post_context = #{postContext,jdbcType=LONGVARCHAR},
-      post_conext_eng = #{postConextEng,jdbcType=LONGVARCHAR},
-      post_title = #{postTitle,jdbcType=LONGVARCHAR}
-    where id = #{id,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.pong.blog.model.Post" >
-    update posts
-    set author = #{author,jdbcType=BIGINT},
-      post_date = #{postDate,jdbcType=TIMESTAMP},
-      post_status = #{postStatus,jdbcType=INTEGER},
-      comment_status = #{commentStatus,jdbcType=INTEGER},
-      ping_status = #{pingStatus,jdbcType=INTEGER},
-      post_modified = #{postModified,jdbcType=TIMESTAMP},
-      post_parent = #{postParent,jdbcType=BIGINT},
-      guid = #{guid,jdbcType=VARCHAR},
-      menu_order = #{menuOrder,jdbcType=INTEGER},
-      post_type = #{postType,jdbcType=VARCHAR},
-      post_mime_type = #{postMimeType,jdbcType=VARCHAR},
-      comment_count = #{commentCount,jdbcType=BIGINT}
-    where id = #{id,jdbcType=BIGINT}
-  </update>
+<mapper namespace="com.pong.blog.service.mapper.PostDAO">
+	<resultMap id="BaseResultMap" type="com.pong.blog.model.Post">
+		<id column="id" property="id" jdbcType="BIGINT" />
+		<result column="context" property="context" jdbcType="LONGVARCHAR" />
+		<result column="conext_eng" property="conextEng" jdbcType="LONGVARCHAR" />
+		<result column="title" property="title" jdbcType="VARCHAR" />
+		<result column="author" property="author" jdbcType="BIGINT" />
+		<result column="post_date" property="postDate" jdbcType="TIMESTAMP" />
+		<result column="status" property="status" jdbcType="INTEGER" />
+		<result column="post_modified" property="postModified"
+			jdbcType="TIMESTAMP" />
+		<result column="post_parent" property="postParent" jdbcType="BIGINT" />
+		<result column="category" property="category" jdbcType="VARCHAR" />
+		<result column="guid" property="guid" jdbcType="VARCHAR" />
+		<result column="post_type" property="postType" jdbcType="VARCHAR" />
+		<result column="post_mime_type" property="postMimeType"
+			jdbcType="VARCHAR" />
+		<result column="comment_count" property="commentCount"
+			jdbcType="BIGINT" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id, context, conext_eng, title,author, post_date, status,
+		post_modified,
+		post_parent, category, guid, post_type,
+		post_mime_type,
+		comment_count, create_time, update_time
+	</sql>
+	<sql id="Blob_Column_List">
+
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Long">
+		select
+		<include refid="Base_Column_List" />
+		from posts
+		where id = #{id,jdbcType=BIGINT}
+	</select>
+	<insert id="insert" parameterType="com.pong.blog.model.Post">
+		insert into posts (context,
+		conext_eng,title,author, post_date,
+		status, post_modified, post_parent,
+		category, guid, post_type,
+		post_mime_type, comment_count)
+		values
+		(#{context,jdbcType=VARCHAR},#{conextEng,jdbcType=VARCHAR},#{title,jdbcType=VARCHAR},
+		#{author,jdbcType=BIGINT}, #{postDate,jdbcType=TIMESTAMP},
+		#{status,jdbcType=INTEGER}, #{postModified,jdbcType=TIMESTAMP},
+		#{postParent,jdbcType=BIGINT},
+		#{category,jdbcType=VARCHAR},
+		#{guid,jdbcType=VARCHAR}, #{postType,jdbcType=VARCHAR},
+		#{postMimeType,jdbcType=VARCHAR}, #{commentCount,jdbcType=BIGINT})
+	</insert>
+
+	<update id="updateByPrimaryKey" parameterType="com.pong.blog.model.Post">
+		update posts
+		<set>
+		    <if test="title !=null and title !=''">
+				title = #{title,jdbcType=VARCHAR},
+			</if>
+			<if test="category !=null and category !=''">
+				category = #{category,jdbcType=VARCHAR},
+			</if>
+			<if test="author !=null and author !=''">
+				author = #{author,jdbcType=BIGINT},
+			</if>
+			<if test="postDate !=null and postDate !=''">
+				post_date = #{postDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="status !=null and status !=''">
+				status = #{status,jdbcType=INTEGER},
+			</if>
+			<if test="postModified !=null and postModified !=''">
+				post_modified = #{postModified,jdbcType=TIMESTAMP},
+			</if>
+			<if test="postParent !=null and postParent !=''">
+				post_parent = #{postParent,jdbcType=BIGINT},
+			</if>
+			<if test="guid !=null and guid !=''">
+				guid = #{guid,jdbcType=VARCHAR},
+			</if>
+			<if test="postType !=null and postType !=''">
+				post_type = #{postType,jdbcType=VARCHAR},
+			</if>
+			<if test="postMimeType !=null and postMimeType !=''">
+				post_mime_type = #{postMimeType,jdbcType=VARCHAR},
+			</if>
+			<if test="commentCount !=null and commentCount !=''">
+				comment_count = #{commentCount,jdbcType=BIGINT},
+			</if>
+		</set>
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+
+	<select id="count" resultType="int">
+		select count(*)
+		from posts
+	</select>
+
+	<select id="list" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from posts
+		limit #{start,jdbcType=INTEGER},#{length,jdbcType=INTEGER}
+	</select>
+
+	<select id="get " resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from posts
+		where id= #{id,jdbcType=BIGINT}
+	</select>
+	
+	<update id="batchApprove" parameterType="java.util.List">
+		update posts
+		set status =1
+		where id in
+		<foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+		
+	</update>
+	<update id="batchDelete" parameterType="java.util.List">
+		update posts
+		set status =2
+		where id in
+		<foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+		
+	</update>
 </mapper>

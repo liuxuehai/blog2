@@ -11,23 +11,19 @@ public class Comment extends BaseObject {
 
     private Long postId;
 
-    private String commentAuthor;
+    private Long authorId;
 
-    private String commentAuthorEmail;
+    private String ip;
 
-    private String commentAuthorUrl;
+    private Date date;
 
-    private String commentAuthorIp;
+    private String agent;
 
-    private Date commentDate;
+    private String approved;
 
-    private String commentApproved;
+    private String type;
 
-    private String commentAgent;
-
-    private String commentType;
-
-    private Long commentParent;
+    private Long parent;
 
     private Long userId;
 
@@ -35,7 +31,7 @@ public class Comment extends BaseObject {
 
     private Date updateTime;
 
-    private String commentContext;
+    private String context;
 
     public Long getId() {
         return id;
@@ -53,76 +49,60 @@ public class Comment extends BaseObject {
         this.postId = postId;
     }
 
-    public String getCommentAuthor() {
-        return commentAuthor;
+    public Long getAuthorId() {
+        return authorId;
     }
 
-    public void setCommentAuthor(String commentAuthor) {
-        this.commentAuthor = commentAuthor == null ? null : commentAuthor.trim();
+    public void setAuthorId(Long authorId) {
+        this.authorId = authorId;
     }
 
-    public String getCommentAuthorEmail() {
-        return commentAuthorEmail;
+    public String getIp() {
+        return ip;
     }
 
-    public void setCommentAuthorEmail(String commentAuthorEmail) {
-        this.commentAuthorEmail = commentAuthorEmail == null ? null : commentAuthorEmail.trim();
+    public void setIp(String ip) {
+        this.ip = ip == null ? null : ip.trim();
     }
 
-    public String getCommentAuthorUrl() {
-        return commentAuthorUrl;
+    public Date getDate() {
+        return date;
     }
 
-    public void setCommentAuthorUrl(String commentAuthorUrl) {
-        this.commentAuthorUrl = commentAuthorUrl == null ? null : commentAuthorUrl.trim();
+    public void setDate(Date date) {
+        this.date = date;
     }
 
-    public String getCommentAuthorIp() {
-        return commentAuthorIp;
+    public String getAgent() {
+        return agent;
     }
 
-    public void setCommentAuthorIp(String commentAuthorIp) {
-        this.commentAuthorIp = commentAuthorIp == null ? null : commentAuthorIp.trim();
+    public void setAgent(String agent) {
+        this.agent = agent == null ? null : agent.trim();
     }
 
-    public Date getCommentDate() {
-        return commentDate;
+    public String getApproved() {
+        return approved;
     }
 
-    public void setCommentDate(Date commentDate) {
-        this.commentDate = commentDate;
+    public void setApproved(String approved) {
+        this.approved = approved == null ? null : approved.trim();
     }
 
-    public String getCommentApproved() {
-        return commentApproved;
+    public String getType() {
+        return type;
     }
 
-    public void setCommentApproved(String commentApproved) {
-        this.commentApproved = commentApproved == null ? null : commentApproved.trim();
+    public void setType(String type) {
+        this.type = type == null ? null : type.trim();
     }
 
-    public String getCommentAgent() {
-        return commentAgent;
+    public Long getParent() {
+        return parent;
     }
 
-    public void setCommentAgent(String commentAgent) {
-        this.commentAgent = commentAgent == null ? null : commentAgent.trim();
-    }
-
-    public String getCommentType() {
-        return commentType;
-    }
-
-    public void setCommentType(String commentType) {
-        this.commentType = commentType == null ? null : commentType.trim();
-    }
-
-    public Long getCommentParent() {
-        return commentParent;
-    }
-
-    public void setCommentParent(Long commentParent) {
-        this.commentParent = commentParent;
+    public void setParent(Long parent) {
+        this.parent = parent;
     }
 
     public Long getUserId() {
@@ -149,11 +129,11 @@ public class Comment extends BaseObject {
         this.updateTime = updateTime;
     }
 
-    public String getCommentContext() {
-        return commentContext;
+    public String getContext() {
+        return context;
     }
 
-    public void setCommentContext(String commentContext) {
-        this.commentContext = commentContext == null ? null : commentContext.trim();
+    public void setContext(String context) {
+        this.context = context == null ? null : context.trim();
     }
 }

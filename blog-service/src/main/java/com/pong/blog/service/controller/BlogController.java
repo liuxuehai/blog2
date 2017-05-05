@@ -17,7 +17,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.*;
 import com.alibaba.fastjson.JSON;
 import com.pong.blog.dto.BlogDto;
 import com.pong.blog.dto.BlogEdit;
-import com.pong.blog.dto.BlogReslut;
+import com.pong.blog.dto.BlogResult;
 import com.pong.blog.model.Post;
 import com.pong.blog.service.mapper.PostDAO;
 
@@ -30,11 +30,11 @@ public class BlogController {
 	PostDAO postDAO;
 
 	@RequestMapping(value = "/blog/list", method = { GET })
-	public BlogReslut list(String data) {
+	public BlogResult list(String data) {
 		logger.info("list请求数据:{}", data);
 
 		BlogDto dto = JSON.parseObject(data, BlogDto.class);
-		BlogReslut result = new BlogReslut();
+		BlogResult result = new BlogResult();
 		int count = postDAO.count(dto);
 		if (count > 0) {
 			List<Post> list = postDAO.list(dto);

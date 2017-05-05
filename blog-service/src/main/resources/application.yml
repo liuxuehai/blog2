@@ -3,14 +3,14 @@ spring:
        name: blog-service
    datasource:
        driverClassName: com.mysql.jdbc.Driver
-       url: jdbc:mysql://172.20.17.80/blog?characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useSSL=false
+       url: jdbc:mysql://172.20.20.100/blog?characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useSSL=false
        username: root
        password: 123456
     
 eureka:
    client:
          serviceUrl:
-             defaultZone: http://localhost:8761/eureka/
+             defaultZone: http://peer1.xujin.org:8761/eureka/
    instance:
          appname: blog-service
          prefer-ip-address: true

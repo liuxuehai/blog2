@@ -1,11 +1,11 @@
 Manifest-Version: 1.0
 Implementation-Title: blog-common
 Implementation-Version: 1.0.0-SNAPSHOT
-Built-By: liuping
+Built-By: xn036608
 Specification-Title: blog-common
 Implementation-Vendor-Id: com.pong.blog
 Class-Path: lib/blog-model-1.0.0-SNAPSHOT.jar lib/commons-lang-2.6.jar
-Build-Jdk: 1.8.0_111
+Build-Jdk: 1.8.0_73
 Specification-Version: 1.0.0-SNAPSHOT
 Created-By: Maven Integration for Eclipse
 

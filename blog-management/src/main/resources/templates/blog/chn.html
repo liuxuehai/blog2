@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="layout">
+<!-- layout文件路径-->
+<head>
+<meta charset="utf-8" />
+<title>Blog 修改</title>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+
+<body>
+	<div layout:fragment="content" class="admin-content-body">
+		<div class="am-cf am-padding am-padding-bottom-0">
+			<div class="am-fl am-cf">
+				<strong class="am-text-primary am-text-lg">
+				     <a href="/blog/index">Blog</a>
+				 </strong> / 
+				   <small th:if="${post == null}" >新增</small>
+				   <small th:if="${post !=  null}" >修改</small>
+			</div>
+		</div>
+		<hr />
+		<div class="am-g">
+			<form action="/blog/content" class="am-form" id="blog" method="post" th:object="${post}">
+			    <input type="hidden"  name ="id"  th:value="*{id}"  />
+				<fieldset>
+					 <div class="am-form-group" >
+                         <label for="myue">文章中文内容：</label>
+                         <textarea class="am-validate" name="context" id="myue" required="required"  th:text="*{context}" ></textarea>
+                     </div>
+					<button class="am-btn am-btn-secondary" type="submit" id="submitBtn">提交</button>
+				</fieldset>
+			</form>
+		</div>
+
+		
+		<script src="../app/js/blog/content.js" th:src="@{/app/js/blog/content.js}"></script>
+		<script src="../ue/config.js" th:src="@{/ue/config.js}"></script>
+        <script src="../ue/ueditor.all.js" th:src="@{/ue/ueditor.all.js}" ></script>
+	</div>
+
+</body>
+</html>
+
+

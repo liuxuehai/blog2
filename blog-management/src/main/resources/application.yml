@@ -20,11 +20,16 @@ spring:
              force: true
              charset: utf-8
              enabled: true
+   data:
+       mongodb:
+             host: 172.20.20.100
+             port: 27017
+             database: blog
 eureka:
    client:
          registerWithEureka: false 
          serviceUrl:
-             defaultZone: http://localhost:8761/eureka/
+             defaultZone: http://peer1.xujin.org:8761/eureka/
    instance:
          prefer-ip-address: true
 

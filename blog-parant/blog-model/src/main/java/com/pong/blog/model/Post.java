@@ -13,7 +13,7 @@ public class Post extends BaseObject {
 	
 	private String context;
 
-    private String conextEng;
+    private String contextEng;
 
 	private Date postDate;
 
@@ -127,15 +127,21 @@ public class Post extends BaseObject {
 		this.context = context;
 	}
 
-	public String getConextEng() {
-		return conextEng;
-	}
+	/**
+     * @return the contextEng
+     */
+    public String getContextEng() {
+        return contextEng;
+    }
 
-	public void setConextEng(String conextEng) {
-		this.conextEng = conextEng;
-	}
+    /**
+     * @param contextEng the contextEng to set
+     */
+    public void setContextEng(String contextEng) {
+        this.contextEng = contextEng;
+    }
 
-	public String getPostMimeType() {
+    public String getPostMimeType() {
 		return postMimeType;
 	}
 

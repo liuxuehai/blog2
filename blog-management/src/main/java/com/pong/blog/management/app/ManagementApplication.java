@@ -10,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
 
 @EnableDiscoveryClient
 @SpringBootApplication
-@ComponentScan(basePackages = "com.pong.blog.management")
+@ComponentScan(basePackages = "com.pong.blog.management.*,com.pong.blog.management.data.mongo.*")
 public class ManagementApplication {
 
 	@Bean

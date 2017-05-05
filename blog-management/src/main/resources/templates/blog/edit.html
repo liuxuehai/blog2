@@ -5,7 +5,9 @@
 <!-- layout文件路径-->
 <head>
 <meta charset="utf-8" />
-<title>首页</title>
+<title>Blog 
+    
+</title>
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
@@ -36,19 +38,14 @@
 						 <input type="text" name ="category" id="doc-vld-email-2-1" minlength="3"
 							placeholder="输入文章类型（至少 3 个字符）" required="required"   th:value="*{category}" />
 					 </div>
-					 <div class="am-form-group">
-                         <label for="myue">文章内容：</label>
-                         <textarea class="am-validate" name="context" id="myue" required="required"  th:text="*{context}" ></textarea>
-                     </div>
-					<button class="am-btn am-btn-secondary" type="submit" id="submit">提交</button>
+					<button class="am-btn am-btn-secondary" type="submit" id="submitBtn">提交</button>
 				</fieldset>
 			</form>
 		</div>
 
 		
 		<script src="../app/js/blog/edit.js" th:src="@{/app/js/blog/edit.js}"></script>
-		<script src="http://ueditor.baidu.com/ueditor/ueditor.config.js"></script>
-        <script src="http://ueditor.baidu.com/ueditor/ueditor.all.js"></script>
+
 	</div>
 
 </body>

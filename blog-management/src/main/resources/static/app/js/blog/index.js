@@ -53,7 +53,14 @@ $(document).ready(function() {
                 return text;
             }
 		} , {
-			"data" : "status"
+			"data" : "id",
+			orderable : false,  
+            bSortable : false,
+            render : function(data, type, row, meta) {  
+                var content = ' <button type="button" class="am-btn am-btn-default" onclick="chn('+data+')" >  编辑中文</button>';
+                content+= ' <button type="button" class="am-btn am-btn-default" onclick="eng('+data+')" >  编辑英文</button>';
+                return content;  
+            }
 		} ]
 		,  
         drawCallback : function() {  
@@ -143,6 +150,14 @@ $(document).ready(function() {
 		}
 	});
 	
-	
+
 
 });
+
+function chn(id){
+	window.location = "/blog/chn?id="+id;
+}
+
+function eng(id){
+	window.location = "/blog/eng?id="+id;
+}

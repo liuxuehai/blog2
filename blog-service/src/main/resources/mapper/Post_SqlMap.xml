@@ -4,7 +4,7 @@
 	<resultMap id="BaseResultMap" type="com.pong.blog.model.Post">
 		<id column="id" property="id" jdbcType="BIGINT" />
 		<result column="context" property="context" jdbcType="LONGVARCHAR" />
-		<result column="conext_eng" property="conextEng" jdbcType="LONGVARCHAR" />
+		<result column="context_eng" property="contextEng" jdbcType="LONGVARCHAR" />
 		<result column="title" property="title" jdbcType="VARCHAR" />
 		<result column="author" property="author" jdbcType="BIGINT" />
 		<result column="post_date" property="postDate" jdbcType="TIMESTAMP" />
@@ -24,7 +24,7 @@
 	</resultMap>
 
 	<sql id="Base_Column_List">
-		id, context, conext_eng, title,author, post_date, status,
+		id, context, context_eng, title,author, post_date, status,
 		post_modified,
 		post_parent, category, guid, post_type,
 		post_mime_type,
@@ -42,12 +42,12 @@
 	</select>
 	<insert id="insert" parameterType="com.pong.blog.model.Post">
 		insert into posts (context,
-		conext_eng,title,author, post_date,
+		context_eng,title,author, post_date,
 		status, post_modified, post_parent,
 		category, guid, post_type,
 		post_mime_type, comment_count)
 		values
-		(#{context,jdbcType=VARCHAR},#{conextEng,jdbcType=VARCHAR},#{title,jdbcType=VARCHAR},
+		(#{context,jdbcType=VARCHAR},#{contextEng,jdbcType=VARCHAR},#{title,jdbcType=VARCHAR},
 		#{author,jdbcType=BIGINT}, #{postDate,jdbcType=TIMESTAMP},
 		#{status,jdbcType=INTEGER}, #{postModified,jdbcType=TIMESTAMP},
 		#{postParent,jdbcType=BIGINT},
@@ -61,6 +61,12 @@
 		<set>
 		    <if test="title !=null and title !=''">
 				title = #{title,jdbcType=VARCHAR},
+			</if>
+			<if test="context !=null and context !=''">
+				context = #{context,jdbcType=VARCHAR},
+			</if>
+			<if test="contextEng !=null and contextEng !=''">
+				context_eng = #{contextEng,jdbcType=VARCHAR},
 			</if>
 			<if test="category !=null and category !=''">
 				category = #{category,jdbcType=VARCHAR},

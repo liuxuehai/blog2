@@ -6,7 +6,7 @@ import java.util.List;
 import com.blog.model.base.BaseObject;
 import com.pong.blog.model.Post;
 
-public class BlogReslut extends BaseObject {
+public class BlogResult extends BaseObject {
 
 	/**
 	 * 
@@ -15,7 +15,7 @@ public class BlogReslut extends BaseObject {
 	private int total;
 	private List<Post> posts;
 
-	public BlogReslut() {
+	public BlogResult() {
 		total = 0;
 		posts = new ArrayList<Post>();
 	}

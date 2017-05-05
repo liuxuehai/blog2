@@ -1,27 +1,21 @@
 $(document).ready(function() {
-	 var editor = UE.getEditor('myue');
 	$('#blog').validator({
 		
 		submit: function() {
 			// 同步编辑器数据
-		      editor.sync();
 			var formValidity = this.isFormValid();
 			if (formValidity) {
 			   // 验证成功的逻辑
 			    var $subbtn = $("#submitBtn");
 			    $subbtn.button('loading');
-			    ajaxSubmit($form[0],
-			       function(data) {
-			        console.log(data);
-			        
-			        if(data.result>0){
-			        	 mzalert("ssds");
+			    var  param =$("#blog").serialize();
+				$.post("/blog/edit",param,function(data){
+					if(data.result>0){
 						window.location = "/blog/index";
 					}else{
-						DialogReturn(data);
+						alert("eee");
 					}
-			      
-			   });
+				},"json");
 
 			} else {
 			    // 验证失败的逻辑
@@ -47,15 +41,6 @@ $(document).ready(function() {
 
 	      $alert.html(msg).show();
 	    }
-	  });
-	
-	
-	 // 编辑器内容变化时同步到 textarea
-	  editor.addListener('contentChange', function() {
-	      editor.sync();
-
-	       // 触发验证
-	       $('[name=context]').trigger('change');
 	  });
 	
 	/*$("#submit").on('click', function() {

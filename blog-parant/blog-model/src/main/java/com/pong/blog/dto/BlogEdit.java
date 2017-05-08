@@ -13,6 +13,7 @@ public class BlogEdit extends BaseObject {
 	private Long  author;
 	private String title;
 	private String category;
+	private String tag;
 	private String context;
 	private String contextEng;
 	public Long getId() {
@@ -39,7 +40,19 @@ public class BlogEdit extends BaseObject {
 	public void setCategory(String category) {
 		this.category = category;
 	}
-	public String getContext() {
+	/**
+     * @return the tag
+     */
+    public String getTag() {
+        return tag;
+    }
+    /**
+     * @param tag the tag to set
+     */
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
+    public String getContext() {
 		return context;
 	}
 	public void setContext(String context) {

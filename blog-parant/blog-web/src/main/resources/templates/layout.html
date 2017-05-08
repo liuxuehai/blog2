@@ -1,0 +1,107 @@
+<!DOCTYPE html >
+
+<html class="js cssanimations" lang="utf-8" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="apple-mobile-web-app-title" content="Amaze UI" />
+<title>Amaze UI Admin index Examples</title>
+<meta name="description" content="index 页面" />
+<meta name="keywords" content="index" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="renderer" content="webkit" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<link rel="icon" type="image/png" href="../amazeui/assets/i/favicon.png"
+	th:href="@{/amazeui/assets/i/favicon.png}" />
+<link rel="stylesheet" href="../amazeui/assets/css/amazeui.min.css"
+	th:href="@{/amazeui/assets/css/amazeui.min.css}" />
+<link rel="stylesheet" href="../web/css/web.css"
+	th:href="@{/web/css/web.css}" />
+
+</head>
+<body>
+	<!--[if lte IE 9]>
+     <p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，Amaze UI 暂不支持。 请 <a href="http://browsehappy.com/" target="_blank">升级浏览器</a>
+        以获得更好的体验！</p>
+     <![endif]-->
+
+	<header class="am-topbar">
+		<h1 class="am-topbar-brand">
+			<a href="#">Blog</a>
+		</h1>
+
+
+		<button
+			class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only"
+			data-am-collapse="{target: '#topbar-collapse'}">
+			<span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span>
+		</button>
+		<div class="am-collapse am-topbar-collapse" id="topbar-collapse">
+
+			<ul class="am-nav am-nav-pills am-topbar-nav">
+				<li class="am-active"><a href="#">首页</a></li>
+				<li><a href="#">项目</a></li>
+				<li class="am-dropdown" data-am-dropdown=""><a
+					class="am-dropdown-toggle" data-am-dropdown-toggle=""
+					href="javascript:;"> 菜单 <span class="am-icon-caret-down"></span>
+				</a>
+					<ul class="am-dropdown-content">
+						<li class="am-dropdown-header">标题</li>
+						<li><a href="#">关于我们</a></li>
+						<li><a href="#">关于字体</a></li>
+						<li><a href="#">TIPS</a></li>
+					</ul></li>
+			</ul>
+			<form
+				class="am-topbar-form am-topbar-left am-form-inline am-topbar-right"
+				role="search">
+				<div class="am-form-group">
+					<input type="text" class="am-form-field am-input-sm"
+						placeholder="搜索文章" />
+				</div>
+				<button type="submit" class="am-btn am-btn-default am-btn-sm">搜索</button>
+			</form>
+		</div>
+	</header>
+	<div class="am-g am-g-fixed blog-g-fixed">
+		<div class="am-u-md-8">
+			<div layout:fragment="content"></div>
+		</div>
+		<div class="am-u-md-4 blog-sidebar">
+			<div class="am-panel-group">
+				<section class="am-panel am-panel-default">
+					<div class="am-panel-hd">关于我</div>
+					<div class="am-panel-bd">
+						<p>前所未有的中文云端字型服务，让您在 web
+							平台上自由使用高品质中文字体，跨平台、可搜寻，而且超美。云端字型是我们的事业，推广字型学知识是我们的志业。从字体出发，关心设计与我们的生活，justfont
+							blog 正是為此而生。</p>
+						<a class="am-btn am-btn-success am-btn-sm" href="#">查看更多 →</a>
+					</div>
+				</section>
+			</div>
+		</div>
+
+	</div>
+
+	<footer class="blog-footer">
+		<p>
+			blog template<br /> <small>© Copyright XXX. by the AmazeUI
+				Team.</small>
+		</p>
+	</footer>
+
+	<!--[if lte IE 8 ]>
+      <script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+      <script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+      <script src="assets/js/amazeui.ie8polyfill.min.js"></script>
+    <![endif]-->
+    <script src="../amazeui/assets/js/jquery.min.js"
+		th:href="@{/amazeui/assets/js/jquery.min.js}"></script>
+    
+	<script src="../amazeui/assets/js/amazeui.min.js"
+		th:href="@{/amazeui/assets/js/amazeui.min.js}"></script>
+	
+</body>
+</html>

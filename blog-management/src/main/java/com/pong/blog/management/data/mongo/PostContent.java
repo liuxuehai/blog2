@@ -15,12 +15,9 @@ import com.blog.model.base.BaseObject;
  * @version  
  * @author liuping : 2017年5月5日 
  */
-public class PostContent extends BaseObject{
+public class PostContent {
 
-    /**
-     * 
-     */
-    private static final long serialVersionUID = 1L;
+    
     @Id
     private String id;
     
@@ -68,6 +65,14 @@ public class PostContent extends BaseObject{
      */
     public void setContextEng(String contextEng) {
         this.contextEng = contextEng;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String toString() {
+        return "PostContent [id=" + id + ", context=" + context + ", contextEng=" + contextEng + "]";
     }
 
 }

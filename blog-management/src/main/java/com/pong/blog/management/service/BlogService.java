@@ -13,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -36,8 +37,10 @@ public class BlogService {
 
     @Autowired
     private RestTemplate restTemplate;
+//    @Autowired
+//    private PostContentRepository postContentRepository;
     @Autowired
-    private PostContentRepository postContentRepository;
+    private  MongoTemplate mongoTemplate;
 
     @Value("${service.blog-url}")
     String serviceUrl;
@@ -49,6 +52,12 @@ public class BlogService {
             Map<String, Object> uriVariables = new HashMap<String, Object>();
             uriVariables.put("id", id);
             post = restTemplate.getForObject(serviceUrl + "blog/get?id={id}", Post.class, uriVariables);
+            PostContent temp = mongoTemplate.findById(id.toString(), PostContent.class);
+            if(temp!=null){
+                post.setContext(temp.getContext());
+                post.setContextEng(temp.getContextEng());
+            }
+            
         }
         logger.info("反馈post信息=======post:{}", post);
         return post;
@@ -67,25 +76,34 @@ public class BlogService {
     }
 
     public int editContent(PostContent content) {
-        logger.info("编辑post content 信息=======content:{}", content);
+        logger.info("编辑post content 信息=======content:{}", content.getId());
         int result = 0;
         if (content == null || StringUtils.isBlank(content.getId())) {
             return result;
         }
-        PostContent temp = postContentRepository.findOne(content.getId());
+        
+//        PostContent temp = postContentRepository.findOne(content.getId());
+        PostContent temp = mongoTemplate.findById(content.getId(), PostContent.class);
 
         PostContent postContent = new PostContent();
         postContent.setId(content.getId());
         if (StringUtils.isNotBlank(content.getContext())) {
             postContent.setContext(content.getContext());
-            postContent.setContextEng(temp.getContextEng());
+            if(temp!=null){
+                postContent.setContextEng(temp.getContextEng());
+            }
+            
         }
 
         if (StringUtils.isNotBlank(content.getContextEng())) {
             postContent.setContextEng(content.getContextEng());
-            postContent.setContext(temp.getContext());
+            if(temp!=null){
+               postContent.setContext(temp.getContext());
+            }
         }
-        postContentRepository.save(postContent);
+        
+        mongoTemplate.save(postContent);
+//        postContentRepository.save(postContent);
 
         return 1;
     }

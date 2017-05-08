@@ -6,11 +6,14 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.web.client.RestTemplate;
 
 @EnableDiscoveryClient
 @SpringBootApplication
-@ComponentScan(basePackages = "com.pong.blog.management.*,com.pong.blog.management.data.mongo.*")
+@ComponentScan(basePackages = "com.pong.blog.management")
+
 public class ManagementApplication {
 
 	@Bean
@@ -18,6 +21,8 @@ public class ManagementApplication {
 	public RestTemplate restTemplate() {
 		return new RestTemplate();
 	}
+	
+
 
 	public static void main(String[] args) {
 		SpringApplication.run(ManagementApplication.class, args);

@@ -2,10 +2,9 @@ Manifest-Version: 1.0
 Implementation-Title: blog-web
 Implementation-Version: 1.0.0-SNAPSHOT
 Built-By: xn036608
-Specification-Title: blog-web
 Implementation-Vendor-Id: com.pong.blog
-Class-Path: lib/blog-model-1.0.0-SNAPSHOT.jar lib/commons-lang-2.6.jar
 Build-Jdk: 1.8.0_73
-Specification-Version: 1.0.0-SNAPSHOT
+Implementation-URL: http://projects.spring.io/spring-boot/blog-web/
 Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
 

@@ -57,7 +57,7 @@ public class BlogController {
 	@RequestMapping(value = "/blog/content", method = RequestMethod.POST)
     @ResponseBody
     public Object content(PostContent content) {
-        logger.info("编辑文档=======:{}", content);
+        logger.info("编辑文档=======:{}", content.getId());
         Map<String, Object> result = new HashMap<String, Object>();
         int count = blogService.editContent(content);
         result.put("result", count);

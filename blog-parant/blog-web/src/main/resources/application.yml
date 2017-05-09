@@ -2,7 +2,7 @@ server:
    port: 80
 
 service:
-    blog-url: http://blog-web/
+    blog-url: http://blog-service/
    
    
 spring:

@@ -26,6 +26,11 @@
 			<form action="/blog/content" class="am-form" id="blog" method="post" th:object="${post}">
 			    <input type="hidden"  name ="id"  th:value="*{id}"  />
 				<fieldset>
+				    <div class="am-form-group" >
+                         <label for="mydescription">文章摘要：</label>
+                         <textarea class="am-validate" name="description" id="mydescription" required="required"  th:text="*{description}" >
+                         </textarea>
+                     </div>
 					 <div class="am-form-group" >
                          <label for="myue">文章中文内容：</label>
                          <textarea class="am-validate" name="context" id="myue" required="required"  th:text="*{context}" ></textarea>
@@ -36,7 +41,7 @@
 		</div>
 
 		
-		<script src="../app/js/blog/content.js" th:src="@{/app/js/blog/content.js}"></script>
+		<script src="../app/js/blog/content.js" th:src="@{/app/js/blog/content_chn.js}"></script>
 		<script src="../ue/config.js" th:src="@{/ue/config.js}"></script>
         <script src="../ue/ueditor.all.js" th:src="@{/ue/ueditor.all.js}" ></script>
 	</div>

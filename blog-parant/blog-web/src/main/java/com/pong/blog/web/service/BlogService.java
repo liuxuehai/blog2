@@ -5,9 +5,24 @@
  ******************************************************************************/
 package com.pong.blog.web.service;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
+import com.alibaba.fastjson.JSON;
+import com.pong.blog.dto.BlogDto;
+import com.pong.blog.dto.BlogResult;
+import com.pong.blog.model.Post;
+import com.pong.blog.web.data.mongo.PostContent;
+import com.pong.blog.web.data.mongo.PostContentRepository;
+
 
 /**
  * 
@@ -18,5 +33,47 @@ import org.springframework.stereotype.Service;
 @Service
 public class BlogService {
     private Logger logger = LoggerFactory.getLogger(getClass());
+    @Autowired
+    private RestTemplate restTemplate;
+    @Autowired
+    private PostContentRepository postContentRepository;
+    @Value("${service.blog-url}")
+    String serviceUrl;
+    
+    
+    public BlogResult list(BlogDto dto) {
+        logger.info("条件查询post信息=======dto:{}", dto);
+        BlogResult result=restTemplate.getForObject(serviceUrl + "blog/list?data={data}", BlogResult.class,
+                JSON.toJSONString(dto));
+        if(result.getPosts()!=null&&result.getPosts().size()>0){
+            for (Post post : result.getPosts()) {
+                PostContent temp=postContentRepository.findOne(post.getId().toString());
+                if(temp!=null){
+                    post.setDescription(temp.getDescription());
+                }
+            }
+        }
+        
+        return result;
+    }
+    
+    public Post getPost(String id) {
+        logger.info("获取post信息=======id:{}", id);
+        Post post = new Post();
+        if (StringUtils.isNoneBlank(id)) {
+            Map<String, Object> uriVariables = new HashMap<String, Object>();
+            uriVariables.put("id", id);
+            post = restTemplate.getForObject(serviceUrl + "blog/get?id={id}", Post.class, uriVariables);
+            PostContent temp = postContentRepository.findOne(id);
+            if(temp!=null){
+                post.setContext(temp.getContext());
+                post.setContextEng(temp.getContextEng());
+                post.setDescription(temp.getDescription());
+            }
+            
+        }
+        logger.info("反馈post信息=======post:{}", post);
+        return post;
+    }
     
 }

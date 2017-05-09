@@ -33,6 +33,8 @@ $(document).ready(function() {
 		}, {
 			"data" : "category"
 		}, {
+			"data" : "tag"
+		}, {
 			"data" : "author"
 		}, {
 			"data" : "postDate",

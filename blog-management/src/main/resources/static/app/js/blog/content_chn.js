@@ -1,10 +1,16 @@
 $(document).ready(function() {
 	 var editor = UE.getEditor('myue');
+	 var description = UE.getEditor('mydescription',{
+		 initialFrameWidth:1000  //初始化编辑器宽度,默认1000
+	     ,initialFrameHeight:300
+	 });
+	 
 	$('#blog').validator({
 		
 		submit: function() {
 			// 同步编辑器数据
-		      editor.sync();
+		    editor.sync();
+		    description.sync();
 			var formValidity = this.isFormValid();
 			if (formValidity) {
 			   // 验证成功的逻辑
@@ -45,13 +51,19 @@ $(document).ready(function() {
 	    }
 	  });
 	
-
 	 // 编辑器内容变化时同步到 textarea
 	  editor.addListener('contentChange', function() {
 	      editor.sync();
 
 	       // 触发验证
 	       $('[name=context]').trigger('change');
+	  });
+	  
+	  description.addListener('contentChange', function() {
+		  description.sync();
+
+	       // 触发验证
+	       $('[name=description]').trigger('change');
 	  });
 	
 	/*$("#submit").on('click', function() {

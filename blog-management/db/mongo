@@ -1,0 +1,8 @@
+dbpath=/data/mongo/mongodb/db
+logpath=/data/mongo/mongodb/logs/mongodb.log
+port=27017
+fork =true 
+logappend=true
+pidfilepath=/data/mongo/mongodb/mongo.pid
+shardsvr=true
+rest=true

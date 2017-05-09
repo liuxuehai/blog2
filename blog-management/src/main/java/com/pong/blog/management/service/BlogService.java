@@ -37,8 +37,8 @@ public class BlogService {
 
     @Autowired
     private RestTemplate restTemplate;
-//    @Autowired
-//    private PostContentRepository postContentRepository;
+    @Autowired
+    private PostContentRepository postContentRepository;
     @Autowired
     private  MongoTemplate mongoTemplate;
 
@@ -56,6 +56,7 @@ public class BlogService {
             if(temp!=null){
                 post.setContext(temp.getContext());
                 post.setContextEng(temp.getContextEng());
+                post.setDescription(temp.getDescription());
             }
             
         }
@@ -82,9 +83,8 @@ public class BlogService {
             return result;
         }
         
-//        PostContent temp = postContentRepository.findOne(content.getId());
-        PostContent temp = mongoTemplate.findById(content.getId(), PostContent.class);
-
+        PostContent temp = postContentRepository.findOne(content.getId());
+        
         PostContent postContent = new PostContent();
         postContent.setId(content.getId());
         if (StringUtils.isNotBlank(content.getContext())) {
@@ -102,8 +102,15 @@ public class BlogService {
             }
         }
         
-        mongoTemplate.save(postContent);
-//        postContentRepository.save(postContent);
+        if(StringUtils.isBlank(content.getDescription())){
+            if(temp!=null){
+                postContent.setDescription(temp.getDescription());
+            }
+        }else{
+            postContent.setDescription(content.getDescription());
+        }
+        
+        postContentRepository.save(postContent);
 
         return 1;
     }

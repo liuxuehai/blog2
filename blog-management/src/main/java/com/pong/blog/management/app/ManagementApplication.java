@@ -13,7 +13,7 @@ import org.springframework.web.client.RestTemplate;
 @EnableDiscoveryClient
 @SpringBootApplication
 @ComponentScan(basePackages = "com.pong.blog.management")
-
+@EnableMongoRepositories(basePackages = "com.pong.blog.management.data.mongo")
 public class ManagementApplication {
 
 	@Bean
@@ -22,8 +22,6 @@ public class ManagementApplication {
 		return new RestTemplate();
 	}
 	
-
-
 	public static void main(String[] args) {
 		SpringApplication.run(ManagementApplication.class, args);
 	}

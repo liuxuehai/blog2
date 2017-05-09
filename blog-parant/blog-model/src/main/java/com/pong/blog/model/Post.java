@@ -11,6 +11,10 @@ public class Post extends BaseObject {
 
 	private Long author;
 	
+	private String tag;
+	
+	private String description;
+	
 	private String context;
 
     private String contextEng;
@@ -55,7 +59,35 @@ public class Post extends BaseObject {
 		this.author = author;
 	}
 
-	public Date getPostDate() {
+	/**
+     * @return the tag
+     */
+    public String getTag() {
+        return tag;
+    }
+
+    /**
+     * @param tag the tag to set
+     */
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
+
+    /**
+     * @return the description
+     */
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * @param description the description to set
+     */
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Date getPostDate() {
 		return postDate;
 	}
 

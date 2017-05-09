@@ -11,6 +11,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.web.client.RestTemplate;
 
 /**
@@ -22,6 +23,7 @@ import org.springframework.web.client.RestTemplate;
 @EnableDiscoveryClient
 @SpringBootApplication
 @ComponentScan(basePackages = "com.pong.blog.web")
+@EnableMongoRepositories(basePackages = "com.pong.blog.web.data.mongo")
 public class WebApplication {
     
     

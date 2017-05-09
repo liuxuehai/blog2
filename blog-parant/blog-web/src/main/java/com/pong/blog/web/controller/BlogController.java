@@ -9,11 +9,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.pong.blog.dto.BlogDto;
+import com.pong.blog.dto.BlogResult;
+import com.pong.blog.model.Post;
 import com.pong.blog.web.service.BlogService;
-
 
 /**
  * 
@@ -27,14 +31,26 @@ public class BlogController {
 
     @Autowired
     private BlogService blogService;
-    
-    
+
     @RequestMapping(value = "/blog/index", method = RequestMethod.GET)
-    public String index() {
-        logger.info("blog 首页=======");
+    public String index(BlogDto dto, ModelMap map) {
+        logger.info("blog 首页=======", dto);
+        if (dto == null) {
+            dto = new BlogDto();
+            dto.setStart(0);
+            dto.setLength(10);
+        }
+        BlogResult result = blogService.list(dto);
+
+        map.put("result", result);
         return "blog/index";
     }
-    
-    
-    
+
+    @RequestMapping(value = "/blog/article/{id}", method = RequestMethod.GET)
+    public String article(@PathVariable String id, ModelMap map) {
+        logger.info("article 信息=======id:{}", id);
+        Post post = blogService.getPost(id);
+        map.put("post", post);
+        return "blog/article";
+    }
 }

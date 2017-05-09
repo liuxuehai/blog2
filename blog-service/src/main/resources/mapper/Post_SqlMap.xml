@@ -4,6 +4,7 @@
 	<resultMap id="BaseResultMap" type="com.pong.blog.model.Post">
 		<id column="id" property="id" jdbcType="BIGINT" />
 		<result column="tag" property="tag" jdbcType="LONGVARCHAR" />
+		<result column="description" property="description" jdbcType="VARCHAR" />
 		<result column="context" property="context" jdbcType="LONGVARCHAR" />
 		<result column="context_eng" property="contextEng" jdbcType="LONGVARCHAR" />
 		<result column="title" property="title" jdbcType="VARCHAR" />
@@ -25,7 +26,7 @@
 	</resultMap>
 
 	<sql id="Base_Column_List">
-		id, tag,context, context_eng, title,author, post_date, status,
+		id, tag,description,context, context_eng, title,author, post_date, status,
 		post_modified,
 		post_parent, category, guid, post_type,
 		post_mime_type,
@@ -42,13 +43,14 @@
 		where id = #{id,jdbcType=BIGINT}
 	</select>
 	<insert id="insert" parameterType="com.pong.blog.model.Post">
-		insert into posts (tag,context,
+		insert into posts (tag,description,context,
 		context_eng,title,author, post_date,
 		status, post_modified, post_parent,
 		category, guid, post_type,
 		post_mime_type, comment_count)
 		values
-		(#{tag,jdbcType=VARCHAR},#{context,jdbcType=VARCHAR},#{contextEng,jdbcType=VARCHAR},#{title,jdbcType=VARCHAR},
+		(#{tag,jdbcType=VARCHAR},#{description,jdbcType=VARCHAR},#{context,jdbcType=VARCHAR},
+		#{contextEng,jdbcType=VARCHAR},#{title,jdbcType=VARCHAR},
 		#{author,jdbcType=BIGINT}, #{postDate,jdbcType=TIMESTAMP},
 		#{status,jdbcType=INTEGER}, #{postModified,jdbcType=TIMESTAMP},
 		#{postParent,jdbcType=BIGINT},
@@ -65,6 +67,9 @@
 			</if>
 			<if test="tag !=null and tag !=''">
 				tag = #{tag,jdbcType=VARCHAR},
+			</if>
+			<if test="description !=null and tag !=''">
+				description = #{description,jdbcType=VARCHAR},
 			</if>
 			<if test="context !=null and context !=''">
 				context = #{context,jdbcType=VARCHAR},

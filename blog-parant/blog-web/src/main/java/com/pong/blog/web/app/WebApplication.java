@@ -22,8 +22,8 @@ import org.springframework.web.client.RestTemplate;
  */
 @EnableDiscoveryClient
 @SpringBootApplication
-@ComponentScan(basePackages = "com.pong.blog.web")
-@EnableMongoRepositories(basePackages = "com.pong.blog.web.data.mongo")
+@ComponentScan(basePackages = "com.pong.blog.web,com.pong.blog.common.service")
+@EnableMongoRepositories(basePackages = "com.pong.blog.common.data.mongo")
 public class WebApplication {
     
     

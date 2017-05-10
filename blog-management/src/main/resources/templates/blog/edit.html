@@ -19,8 +19,8 @@
 				<strong class="am-text-primary am-text-lg">
 				     <a href="/blog/index">Blog</a>
 				 </strong> / 
-				   <small th:if="${post == null}" >新增</small>
-				   <small th:if="${post !=  null}" >修改</small>
+				   <small th:if="${post.id == null}" >新增</small>
+				   <small th:if="${post.id !=  null}" >修改</small>
 			</div>
 		</div>
 		<hr />

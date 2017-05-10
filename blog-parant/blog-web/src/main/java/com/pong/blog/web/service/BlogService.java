@@ -30,7 +30,7 @@ import com.pong.blog.web.data.mongo.PostContentRepository;
  * @version  
  * @author liuping : 2017年5月8日 
  */
-@Service
+//@Service
 public class BlogService {
     private Logger logger = LoggerFactory.getLogger(getClass());
     @Autowired

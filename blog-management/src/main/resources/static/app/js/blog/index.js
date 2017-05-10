@@ -27,40 +27,47 @@ $(document).ready(function() {
 		columns : [
 			CONSTANT.DATA_TABLES.COLUMN.CHECKBOX,
 			 {
-			"data" : "id"
+			"data" : "id",
+			"width": "15%"
 		}, {
-			"data" : "title"
+			"data" : "title",
+			"width": "15%"
 		}, {
-			"data" : "category"
+			"data" : "category",
+			"width": "10%"
 		}, {
-			"data" : "tag"
+			"data" : "tag",
+			"width": "10%"
 		}, {
-			"data" : "author"
+			"data" : "author",
+			"width": "8%"
 		}, {
 			"data" : "postDate",
 			"render": function(data, type, row) {
                 return getDate(data);
-            }
+            },
+			"width": "10%"
 		}, {
 			"data" : "status",
 			"render": function(data, type, row) {
 				var text=data;
-				if(data==0){
+				if(data==1){
 					text="未审核";
-				}else if(data==1){
-					text="已审核";
 				}else if(data==2){
+					text="已审核";
+				}else if(data==3){
 					text="已删除";
 				}
                 return text;
-            }
+            },
+			"width": "8%"
 		} , {
 			"data" : "id",
 			orderable : false,  
             bSortable : false,
             render : function(data, type, row, meta) {  
-                var content = ' <button type="button" class="am-btn am-btn-default" onclick="chn('+data+')" >  编辑中文</button>';
-                content+= ' <button type="button" class="am-btn am-btn-default" onclick="eng('+data+')" >  编辑英文</button>';
+                var content = ' <button type="button" class="am-btn am-btn-default" onclick="chn(\''+data+'\')" >  编辑中文</button>';
+                content+= ' <button type="button" class="am-btn am-btn-default" onclick="eng(\''+data+'\')" >  编辑英文</button>';
                 return content;  
             }
 		} ]

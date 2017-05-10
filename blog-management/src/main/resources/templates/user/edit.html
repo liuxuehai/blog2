@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="layout">
+<!-- layout文件路径-->
+<head>
+<meta charset="utf-8" />
+<title>User 编辑 
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+
+<body>
+	<div layout:fragment="content" class="admin-content-body">
+		<div class="am-cf am-padding am-padding-bottom-0">
+			<div class="am-fl am-cf">
+				<strong class="am-text-primary am-text-lg">
+				     <a href="/user/index">Menu</a>
+				 </strong> / 
+				   <small th:if="${user.id == null}" >新增</small>
+				   <small th:if="${user.id !=  null}" >修改</small>
+			</div>
+		</div>
+		<hr />
+		<div class="am-g">
+			<form action="/user/edit" class="am-form" id="user" method="post" th:object="${user}">
+			    <input type="hidden"  name ="id"  th:value="*{id}"  />
+				<fieldset>
+					 <div class="am-form-group">
+						  <label for="doc-vld-name-2-1">用户名称：</label> 
+						  <input type="text" id="doc-vld-name-2-1" name ="name" minlength="3" th:value="*{name}" 
+						   placeholder="输入用户名称（至少 3 个字符）" required="required" />
+					 </div>
+					 <div class="am-form-group">
+						  <label for="doc-vld-password-2-1">用户密码：</label> 
+						  <input type="text" id="doc-vld-password-2-1" name ="password" minlength="3" th:value="*{password}" 
+						   placeholder="输入用户密码（至少 3 个字符）" required="required" />
+					 </div>
+					 <div class="am-form-group">
+						  <label for="doc-vld-phone-2-1">用户手机号：</label> 
+						  <input type="text" id="doc-vld-phone-2-1" name ="phone" minlength="3" th:value="*{phone}" 
+						   placeholder="输入用户手机号（至少 3 个字符）" required="required" />
+					 </div>
+					 <div class="am-form-group">
+						 <label for="doc-vld-email-2-1">用户邮箱：</label>
+						 <input type="text" name ="email" id="doc-vld-email-2-1" minlength="3"
+							placeholder="输入用户邮箱（至少 3 个字符）" required="required"   th:value="*{email}" />
+					 </div>
+					 <div class="am-form-group">
+						 <label for="doc-vld-qq-2-1">用户qq：</label>
+						 <input type="text" name ="qq" id="doc-vld-qq-2-1" minlength="3"
+							placeholder="输入用户qq（至少 3 个字符）" required="required"   th:value="*{qq}" />
+					 </div>
+					 <div class="am-form-group">
+						 <label for="doc-vld-role-2-1">用户角色：</label>
+						 <input type="text" name ="role" id="doc-vld-role-2-1" minlength="3"
+							placeholder="输入用户角色（至少 3 个字符）" required="required"   th:value="*{role}" />
+					 </div>
+					  <div class="am-form-group">
+						 <label for="doc-vld-github-2-1">用户github：</label>
+						 <input type="text" name ="github" id="doc-vld-github-2-1" minlength="3"
+							placeholder="输入用户github（至少 3 个字符）" required="required"   th:value="*{github}" />
+					 </div>
+					<button class="am-btn am-btn-secondary" type="submit" id="submitBtn">提交</button>
+				</fieldset>
+			</form>
+		</div>
+
+		
+		<script src="../app/js/user/edit.js" th:src="@{/app/js/user/edit.js}"></script>
+
+	</div>
+
+</body>
+</html>
+
+

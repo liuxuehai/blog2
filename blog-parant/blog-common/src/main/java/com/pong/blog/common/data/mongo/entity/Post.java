@@ -5,6 +5,8 @@
  ******************************************************************************/
 package com.pong.blog.common.data.mongo.entity;
 
+import java.util.Date;
+
 import org.springframework.data.annotation.Id;
 
 /**
@@ -24,6 +26,9 @@ public class Post {
     private String title;
     private String category;
     private String tag;
+    private String status;
+    private Date postDate;
+    private int commentCount;
 
     /**
      * @return the id
@@ -103,6 +108,20 @@ public class Post {
     }
 
     /**
+     * @return the status
+     */
+    public String getStatus() {
+        return status;
+    }
+
+    /**
+     * @param status the status to set
+     */
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    /**
      * @param title the title to set
      */
     public void setTitle(String title) {
@@ -135,6 +154,34 @@ public class Post {
      */
     public void setTag(String tag) {
         this.tag = tag;
+    }
+
+    /**
+     * @return the postDate
+     */
+    public Date getPostDate() {
+        return postDate;
+    }
+
+    /**
+     * @param postDate the postDate to set
+     */
+    public void setPostDate(Date postDate) {
+        this.postDate = postDate;
+    }
+
+    /**
+     * @return the commentCount
+     */
+    public int getCommentCount() {
+        return commentCount;
+    }
+
+    /**
+     * @param commentCount the commentCount to set
+     */
+    public void setCommentCount(int commentCount) {
+        this.commentCount = commentCount;
     }
 
 }

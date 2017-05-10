@@ -5,16 +5,21 @@
  ******************************************************************************/
 package com.pong.blog.common.service;
 
+import java.util.Date;
 import java.util.UUID;
 
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.pong.blog.common.data.mongo.entity.Post;
 import com.pong.blog.common.data.mongo.repository.PostRepository;
+import com.pong.blog.dto.BlogDto;
+import com.pong.blog.dto.BlogResult;
 
 /**
  * 
@@ -32,14 +37,20 @@ public class BlogPostService {
 
     public Post getPost(String id) {
         logger.info("获取post信息 ===== id:{}", id);
-        return postRepository.findOne(id);
+        Post post=new Post();
+        if (StringUtils.isNotBlank(id)) {
+            post=postRepository.findOne(id);
+        }
+        
+        return post;
     }
 
     public int editPost(Post post) {
         if (post == null) {
             return 0;
         }
-
+        post.setStatus("1");//未审核
+        post.setPostDate(new Date());
         if (StringUtils.isBlank(post.getId())) {
             post.setId(UUID.randomUUID().toString());
         } else {
@@ -87,6 +98,12 @@ public class BlogPostService {
         }
 
         return 1;
+    }
+
+    public Page<Post> getPosts(int pageNumber, int pageSize) {
+        PageRequest request = new PageRequest(pageNumber, pageSize, null);
+        Page<Post> posts = postRepository.findAll(request);
+        return posts;
     }
 
 }

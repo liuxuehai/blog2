@@ -31,7 +31,7 @@ import com.pong.blog.model.Post;
  * @version  
  * @author liuping : 2017年5月5日 
  */
-@Service
+//@Service
 public class BlogService {
     private Logger logger = LoggerFactory.getLogger(getClass());
 

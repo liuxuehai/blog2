@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="layout">
+<!-- layout文件路径-->
+<head>
+<meta charset="utf-8" />
+<title>Menu 编辑 
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+
+<body>
+	<div layout:fragment="content" class="admin-content-body">
+		<div class="am-cf am-padding am-padding-bottom-0">
+			<div class="am-fl am-cf">
+				<strong class="am-text-primary am-text-lg">
+				     <a href="/menu/index">Menu</a>
+				 </strong> / 
+				   <small th:if="${menu.id == null}" >新增</small>
+				   <small th:if="${menu.id !=  null}" >修改</small>
+			</div>
+		</div>
+		<hr />
+		<div class="am-g">
+			<form action="/menu/edit" class="am-form" id="menu" method="post" th:object="${menu}">
+			    <input type="hidden"  name ="id"  th:value="*{id}"  />
+				<fieldset>
+					 <div class="am-form-group">
+						  <label for="doc-vld-name-2-1">菜单名称：</label> 
+						  <input type="text" id="doc-vld-name-2-1" name ="name" minlength="3" th:value="*{name}" 
+						   placeholder="输入菜单名称（至少 3 个字符）" required="required" />
+					 </div>
+					 <div class="am-form-group">
+						  <label for="doc-vld-code-2-1">菜单code：</label> 
+						  <input type="text" id="doc-vld-code-2-1" name ="code" minlength="3" th:value="*{code}" 
+						   placeholder="输入菜单code（至少 3 个字符）" required="required" />
+					 </div>
+					 <div class="am-form-group">
+						 <label for="doc-vld-url-2-1">菜单url：</label>
+						 <input type="text" name ="url" id="doc-vld-url-2-1" minlength="3"
+							placeholder="输入菜单url（至少 3 个字符）" required="required"   th:value="*{url}" />
+					 </div>
+					 <div class="am-form-group">
+						 <label for="doc-vld-icon-2-1">菜单Icon：</label>
+						 <input type="text" name ="icon" id="doc-vld-icon-2-1" minlength="3"
+							placeholder="输入菜单Icon（至少 3 个字符）" required="required"   th:value="*{icon}" />
+					 </div>
+					<button class="am-btn am-btn-secondary" type="submit" id="submitBtn">提交</button>
+				</fieldset>
+			</form>
+		</div>
+
+		
+		<script src="../app/js/menu/edit.js" th:src="@{/app/js/menu/edit.js}"></script>
+
+	</div>
+
+</body>
+</html>
+
+

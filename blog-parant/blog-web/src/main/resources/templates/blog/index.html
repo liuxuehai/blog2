@@ -12,14 +12,14 @@
 
 <body>
 	<div layout:fragment="content" class="admin-content-body">
-		<article class="blog-main" th:each="post : ${result.posts}">
+		<article class="blog-main" th:each="post : ${posts}">
 			<h3 class="am-article-title blog-title">
 				<a href="#" th:text="${post.title}" th:href="@{/blog/article/{id}(id=${post.id})}">标题</a>
 			</h3>
 			<h4 class="am-article-meta blog-meta">
 				by <a href="" th:text="${post.author}">作者</a> 
 				posted on 
-				<a href="" th:text="${ #calendars.format(post.postDate,'yyyy MMMM dd ')}">日期</a>
+				<a href="" th:text="${ #calendars.format(post.postDate,'yyyy-MMMM-dd')}">日期</a>
 			</h4>
 
 			<div class="am-g blog-content"  th:utext="${post.description}">

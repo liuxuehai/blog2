@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
  * @version  
  * @author liuping : 2017年5月5日 
  */
-@Repository
+//@Repository
 public interface PostContentRepository  extends MongoRepository<PostContent, String>{
 
     

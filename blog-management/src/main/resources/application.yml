@@ -3,6 +3,9 @@ server:
 
 service:
     blog-url: http://blog-service/
+    upload:
+         path: e:\upload\file\
+         url: /ue/file/
    
    
 spring:

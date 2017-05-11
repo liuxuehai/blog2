@@ -5,6 +5,7 @@
  ******************************************************************************/
 package com.pong.blog.common.service;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.UUID;
 
@@ -14,12 +15,15 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
+import com.mongodb.WriteResult;
 import com.pong.blog.common.data.mongo.entity.Post;
 import com.pong.blog.common.data.mongo.repository.PostRepository;
-import com.pong.blog.dto.BlogDto;
-import com.pong.blog.dto.BlogResult;
 
 /**
  * 
@@ -34,14 +38,16 @@ public class BlogPostService {
 
     @Autowired
     private PostRepository postRepository;
+    @Autowired
+    private MongoTemplate mongoTemplate;
 
     public Post getPost(String id) {
         logger.info("获取post信息 ===== id:{}", id);
-        Post post=new Post();
+        Post post = new Post();
         if (StringUtils.isNotBlank(id)) {
-            post=postRepository.findOne(id);
+            post = postRepository.findOne(id);
         }
-        
+
         return post;
     }
 
@@ -49,8 +55,9 @@ public class BlogPostService {
         if (post == null) {
             return 0;
         }
-        post.setStatus("1");//未审核
+        post.setStatus("1");// 未审核
         post.setPostDate(new Date());
+        post.setAuthor("liuping");
         if (StringUtils.isBlank(post.getId())) {
             post.setId(UUID.randomUUID().toString());
         } else {
@@ -100,10 +107,32 @@ public class BlogPostService {
         return 1;
     }
 
+    public Page<Post> getPostsByStatus(String status, int pageNumber, int pageSize) {
+
+        PageRequest request = new PageRequest(pageNumber-1, pageSize, null);
+        Page<Post> posts = postRepository.queryByStatus(status, request);
+        return posts;
+    }
+    
+    public Page<Post> getPostsByAuthor(String author, int pageNumber, int pageSize) {
+
+        PageRequest request = new PageRequest(pageNumber, pageSize, null);
+        Page<Post> posts = postRepository.queryByAuthor(author, request);
+        return posts;
+    }
+
     public Page<Post> getPosts(int pageNumber, int pageSize) {
         PageRequest request = new PageRequest(pageNumber, pageSize, null);
         Page<Post> posts = postRepository.findAll(request);
         return posts;
+    }
+
+    public int updatePostStatus(String status, String id) {
+
+        WriteResult result = mongoTemplate.updateMulti(
+                new Query(Criteria.where("_id").in(Arrays.asList(id.split(",")))),
+                new Update().set("status", status), "post");
+        return result.getN();
     }
 
 }

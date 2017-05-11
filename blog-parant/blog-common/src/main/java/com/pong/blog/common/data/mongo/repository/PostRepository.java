@@ -5,6 +5,8 @@
  ******************************************************************************/
 package com.pong.blog.common.data.mongo.repository;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
@@ -19,4 +21,7 @@ import com.pong.blog.common.data.mongo.entity.Post;
 @Repository
 public interface PostRepository extends MongoRepository<Post, String> {
 
+    Page<Post> queryByStatus(String status, Pageable pageable);
+    
+    Page<Post> queryByAuthor(String author, Pageable pageable);
 }

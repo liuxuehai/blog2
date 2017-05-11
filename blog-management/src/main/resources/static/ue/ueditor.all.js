@@ -8006,6 +8006,11 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
                 serverUrl = imageUrl.replace(/^(.*[\/]).+([\.].+)$/, '$1controller$2');
             }
 
+            if (action == 'uploadimage' || action == 'uploadscrawl' || action == 'uploadimage'
+                || action == 'uploadvideo' || action == 'uploadfile') {
+                 serverUrl='/ue/uploadfile';
+            }
+
             if(serverUrl) {
                 serverUrl = serverUrl + (serverUrl.indexOf('?') == -1 ? '?':'&') + 'action=' + (actionName || '');
                 return utils.formatUrl(serverUrl);

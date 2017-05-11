@@ -28,23 +28,15 @@
 
 		</article>
 		<hr class="am-article-divider blog-hr"/>
-
-		<div id="pagination"  ></div>
+ 
+        <div id="pagination" class="am-pagination blog-pagination"></div>
 		
 		<script src="../amazeui/assets/js/jquery.min.js"
-		     th:href="@{/amazeui/assets/js/jquery.min.js}"></script>
-
-		<script th:inline="javascript">  
-       /*<![CDATA[*/  
-  
-          var pages = [[${total}]];
-          var current=[[${current}]]; 
-          /*]]>*/  
-        </script>
-
+		th:href="@{/amazeui/assets/js/jquery.min.js}"></script>
+		<script src="../amazeui/assets/js/ueditor.parse.min.js"></script>
 		<script src="../web/js/blog/index.js"
-			  th:src="@{/web/js/blog/index.js}"></script>
-			
+			th:src="@{/web/js/blog/index.js}"></script>
+		
 	</div>
 
 </body>

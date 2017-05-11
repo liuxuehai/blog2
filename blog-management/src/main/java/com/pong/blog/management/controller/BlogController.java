@@ -107,7 +107,7 @@ public class BlogController {
 	public Object approve(String data) {
 		logger.info("approve=======:{}", data);
 		Map<String, Object> result = new HashMap<String, Object>();
-		int count = 0;//blogService.approve(data);
+		int count = blogPostService.updatePostStatus("2", data);//blogService.approve(data);
 		result.put("result", count);
 		return result;
 	}
@@ -117,7 +117,7 @@ public class BlogController {
 	public Object delete(String data) {
 		logger.info("delete=======:{}", data);
 		Map<String, Object> result = new HashMap<String, Object>();
-		int count = 0;//blogService.delete(data);
+		int count = blogPostService.updatePostStatus("3", data);;//blogService.delete(data);
 		result.put("result", count);
 		return result;
 	}

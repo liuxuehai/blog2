@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	$('#menu').DataTable({
-		"iDisplayLength" : 20,// 默认每页数量
+		"iDisplayLength" : 10,// 默认每页数量
 		"bPaginate" : true, // 翻页功能
 		"bLengthChange" : false, // 改变每页显示数据数量
 		"bFilter" : false, // 过滤功能

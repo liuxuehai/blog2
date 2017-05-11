@@ -17,7 +17,7 @@
 				<a href="#" th:text="*{title}" th:href="@{/blog/article/{id}(id=*{id})}">标题</a>
 			</h3>
 			<h4 class="am-article-meta blog-meta">
-				by <a href="" th:text="*{author}" th:href="@{/blog/author/{name}(name=*{author})}">作者</a> 
+				by <a href="#" th:text="*{author}" th:href="@{/blog/author/{author}(author=*{author})}">作者</a> 
 				posted on 
 				<a href="" th:text="*{ #calendars.format(postDate,'yyyy-MM-dd')}" 
 				  th:href="@{/blog/date/{time}(time=*{#calendars.format(postDate,'yyyy-MM-dd')})}">日期</a>

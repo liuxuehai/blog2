@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.pong.blog.common.data.mongo.entity.Menu;
-import com.pong.blog.common.data.mongo.entity.Post;
 import com.pong.blog.common.service.MenuService;
 import com.pong.blog.dto.BlogDto;
 import com.pong.blog.management.support.nav.Navigation;

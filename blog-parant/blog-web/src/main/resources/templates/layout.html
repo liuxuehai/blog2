@@ -29,10 +29,8 @@
 
 	<header class="am-topbar">
 		<h1 class="am-topbar-brand">
-			<a href="#">Blog</a>
+			<a href="/">Blog</a>
 		</h1>
-
-
 		<button
 			class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only"
 			data-am-collapse="{target: '#topbar-collapse'}">
@@ -41,18 +39,10 @@
 		<div class="am-collapse am-topbar-collapse" id="topbar-collapse">
 
 			<ul class="am-nav am-nav-pills am-topbar-nav">
-				<li class="am-active"><a href="#">首页</a></li>
-				<li><a href="#">项目</a></li>
-				<li class="am-dropdown" data-am-dropdown=""><a
-					class="am-dropdown-toggle" data-am-dropdown-toggle=""
-					href="javascript:;"> 菜单 <span class="am-icon-caret-down"></span>
-				</a>
-					<ul class="am-dropdown-content">
-						<li class="am-dropdown-header">标题</li>
-						<li><a href="#">关于我们</a></li>
-						<li><a href="#">关于字体</a></li>
-						<li><a href="#">TIPS</a></li>
-					</ul></li>
+				<li class="am-active"><a href="/">首页</a></li>
+				<li><a href="/blog">博文</a></li>
+				<li><a href="/user">作者</a></li>
+				<li><a href="/about">关于我</a></li>
 			</ul>
 			<form
 				class="am-topbar-form am-topbar-left am-form-inline am-topbar-right"
@@ -99,6 +89,9 @@
     <script src="../../amazeui/assets/js/jquery.min.js"	th:href="@{/amazeui/assets/js/jquery.min.js}"></script>
     
 	<script src="../../amazeui/assets/js/amazeui.min.js" th:href="@{/amazeui/assets/js/amazeui.min.js}"></script>
+	
+	<script src="../../amazeui/assets/js/amazeui.page.js"
+		     th:href="@{/amazeui/assets/js/amazeui.page.js}"></script>
 	
 </body>
 </html>

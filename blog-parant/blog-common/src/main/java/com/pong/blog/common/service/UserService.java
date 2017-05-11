@@ -27,14 +27,13 @@ import com.pong.blog.common.data.mongo.repository.UserRepository;
  */
 @Service
 public class UserService {
-    
+
     private Logger logger = LoggerFactory.getLogger(getClass());
- 
+
     @Autowired
     private UserRepository userRepository;
-    
-    
-    public int editUser(User user){
+
+    public int editUser(User user) {
         if (user == null) {
             return 0;
         }
@@ -45,9 +44,8 @@ public class UserService {
         userRepository.save(user);
         return 1;
     }
-    
-    
-    public User getUserByPhone(String phone){
+
+    public User getUserByPhone(String phone) {
         return userRepository.findOne(phone);
     }
 
@@ -56,6 +54,7 @@ public class UserService {
         Page<User> users = userRepository.findAll(request);
         return users;
     }
+
     /**
      * 
      * @param id
@@ -64,11 +63,19 @@ public class UserService {
      * @author liuping 2017年5月10日 下午4:29:19
      */
     public User getUser(String id) {
-        User user=new User();
+        User user = new User();
         if (StringUtils.isNotBlank(id)) {
-            user=userRepository.findOne(id);
+            user = userRepository.findOne(id);
         }
         return user;
     }
-    
+
+    public User findByName(String name) {
+        User user = new User();
+        if (StringUtils.isNotBlank(name)) {
+            user = userRepository.findByName(name);
+        }
+        return user;
+    }
+
 }

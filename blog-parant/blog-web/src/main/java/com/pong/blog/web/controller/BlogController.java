@@ -5,6 +5,7 @@
  ******************************************************************************/
 package com.pong.blog.web.controller;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,11 +39,6 @@ public class BlogController {
     @RequestMapping(value = {"","/index"}, method = RequestMethod.GET)
     public String index(BlogDto dto, ModelMap map) {
         logger.info("blog 首页=======", dto);
-        if (dto == null) {
-            dto = new BlogDto();
-            dto.setStart(0);
-            dto.setLength(10);
-        }
 
         Page<Post> posts = blogPostService.getPostsByStatus("2", dto.getStart(), dto.getLength());
         map.put("posts", posts.getContent());
@@ -56,7 +52,12 @@ public class BlogController {
         logger.info("article 信息=======id:{}", id);
         Post post = blogPostService.getPost(id);
         map.put("post", post);
-        return "blog/article";
+        
+        if (StringUtils.isNotBlank(post.getContext()) && StringUtils.isNotBlank(post.getContextEng())) {
+            return "blog/article";
+        }
+        
+        return "blog/article2";
     }
 
     @RequestMapping(value = "/author/{name}", method = RequestMethod.GET)

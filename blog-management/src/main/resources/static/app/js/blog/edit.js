@@ -13,7 +13,9 @@ $(document).ready(function() {
 					if(data.result>0){
 						window.location = "/blog/index";
 					}else{
-						alert("eee");
+						AMUI.dialog.alert({ title: '错误提示', content: "修改失败", onConfirm: function() { 
+							
+						} });
 					}
 				},"json");
 
@@ -43,27 +45,5 @@ $(document).ready(function() {
 	    }
 	  });
 	
-	/*$("#submit").on('click', function() {
-		try {
-			
-			$('#blog').validator({
-				  validate: function(validity) {
-					  var  param =$("#blog").serialize();
-						$.post("/blog/edit",param,function(data){
-							if(data.result>0){
-								window.location = "/blog/index";
-							}else{
-								alert("eee");
-							}
-						},"json");
-				  }
-			  }
-			)
-			
-			
-		} catch (e) {
-			alert(e)
-		}
-			
-	});*/
+	
 })

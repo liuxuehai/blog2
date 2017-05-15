@@ -24,4 +24,16 @@ public interface PostRepository extends MongoRepository<Post, String> {
     Page<Post> queryByStatus(String status, Pageable pageable);
     
     Page<Post> queryByAuthor(String author, Pageable pageable);
+    
+    Page<Post> queryByTag(String tag, Pageable pageable);
+
+    /**
+     * 
+     * @param category
+     * @param request
+     * @return
+     *
+     * @author liuping 2017年5月12日 上午9:35:37
+     */
+    Page<Post> queryByCategory(String category, Pageable pageable);
 }

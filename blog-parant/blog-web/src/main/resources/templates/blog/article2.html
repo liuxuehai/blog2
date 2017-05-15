@@ -17,40 +17,31 @@
 				<a href="#" th:text="*{title}" th:href="@{/blog/article/{id}(id=*{id})}">标题</a>
 			</h3>
 			<h4 class="am-article-meta blog-meta">
-				
 				<a href="" 
-				  th:href="@{/date/{time}(time=*{#calendars.format(postDate,'yyyy-MM-dd')})}">
-				  <span class="am-icon-calendar"></span>
-				  <span th:text="${ #calendars.format(post.postDate,'yyyy-MMMM-dd')}">日期 </span>
+				   th:href="@{/date/{time}(time=*{#calendars.format(postDate,'yyyy-MM-dd')})}">
+				      <span class="am-icon-calendar"></span>
+                      <span th:text="${ #calendars.format(post.postDate,'yyyy-MMMM-dd')}">日期 </span>
 				</a>
-			   
-			    <a href=""  th:href="@{/category/{value}(value=*{category})}">
-			       <span class="am-icon-folder"></span>
-				   <span th:text="*{category}"> 分类 </span>
-                </a>
+				  
+				<a href=""  th:href="@{/category/{value}(value=*{category})}">
+				  <span class="am-icon-folder"></span>
+				  <span th:text="*{category}"> 分类 </span>
+				</a>
 				  
 				<a href=""  th:href="@{/tag/{value}(value=*{tag})}">
 				    <span class="am-icon-tag"></span>
 				    <span th:text="*{tag}" > 标签 </span>
 				</a> 
-			
-				 <div style="float: right;"> 
-				     <a href="javascript:void(0)" id="chn" style="color:gray">中文 </a>
-				     |<a href="javascript:void(0)" id="eng" >英文 </a> 
-				     |<a href="javascript:void(0)" id="all" >中英文对照 </a>
-				 </div>
+				
 			</h4>
 
 			<div class="am-g blog-content" id="blog-chn" th:utext="*{context}">
 			</div>
-			
-			<div class="am-g blog-content" id="blog-eng" style="display:none" th:utext="*{contextEng}">
-			</div>
 
 		</article>
 		<script src="../../amazeui/assets/js/jquery.min.js"	th:href="@{/amazeui/assets/js/jquery.min.js}"></script>
-		<script src="../web/js/blog/article.js"
-			th:src="@{/web/js/blog/article.js}"></script>
+		<script src="../web/js/blog/article2.js"
+			th:src="@{/web/js/blog/article2.js}"></script>
 
 	</div>
 

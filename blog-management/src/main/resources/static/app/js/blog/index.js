@@ -108,7 +108,9 @@ $(document).ready(function() {
 	$('#approve').on('click', function() {
 		var checkbox = $("tbody :checkbox"); 
 		if(checkbox.filter(':checked').length<=0){
-			alert("请选择一项进行修改")
+			AMUI.dialog.alert({ title: '错误提示', content: '请选择一项进行修改', onConfirm: function() { 
+				
+			} });
 			return;
 		}
 		
@@ -123,19 +125,25 @@ $(document).ready(function() {
 				if(data.result>0){
 					window.location = "/blog/index";
 				}else{
-					alert("eee");
+					AMUI.dialog.alert({ title: '错误提示', content: '审核失败', onConfirm: function() { 
+						
+					} });
 				}
 			},"json");
 			
 		} catch (e) {
-			alert(e)
+            AMUI.dialog.alert({ title: '错误提示', content: e, onConfirm: function() { 
+				
+			} });
 		}
 	});
 	
 	$('#delete').on('click', function() {
 		var checkbox = $("tbody :checkbox"); 
 		if(checkbox.filter(':checked').length<=0){
-			alert("请选择一项进行修改")
+            AMUI.dialog.alert({ title: '错误提示', content: '请选择一项进行修改', onConfirm: function() { 
+				
+			} });
 			return;
 		}
 		
@@ -150,12 +158,16 @@ $(document).ready(function() {
 				if(data.result>0){
 					window.location = "/blog/index";
 				}else{
-					alert("eee");
+                    AMUI.dialog.alert({ title: '错误提示', content: '删除失败', onConfirm: function() { 
+						
+					} });
 				}
 			},"json");
 			
 		} catch (e) {
-			alert(e)
+			AMUI.dialog.alert({ title: '错误提示', content: e, onConfirm: function() { 
+				
+			} });
 		}
 	});
 	

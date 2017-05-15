@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="layout">
+<!-- layout文件路径-->
+<head>
+<meta charset="utf-8" />
+<title>关于我 | 刘平-专注于大数据和人工智能研究</title>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body>
+	<div layout:fragment="content" class="admin-content-body">
+		<article class="blog-main">
+			<h3 class="am-article-title blog-title">
+				<a href="javascript:void(0)"> 关于我</a>
+			</h3>
+
+
+			<div class="am-g blog-content"></div>
+
+
+		</article>
+		<script src="../../amazeui/assets/js/jquery.min.js"
+			th:href="@{/amazeui/assets/js/jquery.min.js}"></script>
+		<script src="../web/js/about/index.js"
+			th:src="@{/web/js/about/index.js}"></script>
+
+	</div>
+
+</body>
+</html>
+
+

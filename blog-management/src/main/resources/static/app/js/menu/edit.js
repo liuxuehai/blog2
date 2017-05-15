@@ -13,7 +13,9 @@ $(document).ready(function() {
 					if(data.result>0){
 						window.location = "/menu/index";
 					}else{
-						alert("eee");
+						AMUI.dialog.alert({ title: '错误提示', content: "修改失败", onConfirm: function() { 
+							
+						} });
 					}
 				},"json");
 

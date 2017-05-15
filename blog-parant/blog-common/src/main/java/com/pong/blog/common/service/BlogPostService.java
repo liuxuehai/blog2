@@ -109,11 +109,25 @@ public class BlogPostService {
 
     public Page<Post> getPostsByStatus(String status, int pageNumber, int pageSize) {
 
-        PageRequest request = new PageRequest(pageNumber-1, pageSize, null);
+        PageRequest request = new PageRequest(pageNumber - 1, pageSize, null);
         Page<Post> posts = postRepository.queryByStatus(status, request);
         return posts;
     }
-    
+
+    public Page<Post> getPostsByTag(String tag, int pageNumber, int pageSize) {
+
+        PageRequest request = new PageRequest(pageNumber - 1, pageSize, null);
+        Page<Post> posts = postRepository.queryByTag(tag, request);
+        return posts;
+    }
+
+    public Page<Post> getPostsByCategory(String category, int pageNumber, int pageSize) {
+
+        PageRequest request = new PageRequest(pageNumber - 1, pageSize, null);
+        Page<Post> posts = postRepository.queryByCategory(category, request);
+        return posts;
+    }
+
     public Page<Post> getPostsByAuthor(String author, int pageNumber, int pageSize) {
 
         PageRequest request = new PageRequest(pageNumber, pageSize, null);
@@ -130,8 +144,8 @@ public class BlogPostService {
     public int updatePostStatus(String status, String id) {
 
         WriteResult result = mongoTemplate.updateMulti(
-                new Query(Criteria.where("_id").in(Arrays.asList(id.split(",")))),
-                new Update().set("status", status), "post");
+                new Query(Criteria.where("_id").in(Arrays.asList(id.split(",")))), new Update().set("status", status),
+                "post");
         return result.getN();
     }
 

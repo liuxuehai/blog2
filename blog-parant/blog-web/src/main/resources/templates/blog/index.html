@@ -5,7 +5,7 @@
 <!-- layout文件路径-->
 <head>
 <meta charset="utf-8" />
-<title>博文 | 刘平-专注于大数据和人工智能研究</title>
+<title >博文 | 刘平-专注于大数据和人工智能研究</title>
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
@@ -14,21 +14,21 @@
 	<div layout:fragment="content" class="admin-content-body">
 		<article class="blog-main" th:each="post : ${posts}">
 			<h3 class="am-article-title blog-title">
-				<a href="#" th:text="${post.title}" th:href="@{/blog/article/{id}(id=${post.id})}">标题</a>
+				<a href="#" th:text="${post.title}" th:href="'/blog/article/'+*{post.id}">标题</a>
 			</h3>
 			<h4 class="am-article-meta blog-meta">
 			    <a href="" 
-				    th:href="@{/date/{time}(time=*{#calendars.format(post.postDate,'yyyy-MM-dd')})}" >
+				    th:href="'/date/' +*{#calendars.format(post.postDate,'yyyy-MM-dd')}" >
 				    <span class="am-icon-calendar"></span>
 				    <span th:text="${ #calendars.format(post.postDate,'yyyy-MMMM-dd')}"> </span>
 				</a>
 				 
-				<a href=""  th:href="@{/category/{value}(value=*{post.category})}">
+				<a href=""  th:href="'/category/'+ *{post.category}">
 				  <span class="am-icon-folder"></span>
 				  <span th:text="${post.category}"> 分类 </span>
 				</a>
 				  
-				<a href=""  th:href="@{/tag/{value}(value=*{post.tag})}"> 
+				<a href=""  th:href="'/tag/'+ *{post.tag}"> 
 				    <span class="am-icon-tag"></span>
 				    <span th:text="${post.tag}"> 标签 </span>
 				</a> 

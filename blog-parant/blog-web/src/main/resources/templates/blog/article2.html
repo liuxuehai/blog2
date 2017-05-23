@@ -5,7 +5,7 @@
 <!-- layout文件路径-->
 <head>
 <meta charset="utf-8" />
-<title>博文 | 刘平-专注于大数据和人工智能研究</title>
+<title  th:text="${post.title}+' | 刘平-专注于大数据和人工智能研究'">博文 | 刘平-专注于大数据和人工智能研究</title>
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
@@ -14,21 +14,21 @@
 	<div layout:fragment="content" class="admin-content-body">
 		<article class="blog-main"  th:object="${post}">
 			<h3 class="am-article-title blog-title">
-				<a href="#" th:text="*{title}" th:href="@{/blog/article/{id}(id=*{id})}">标题</a>
+				<a href="#" th:text="*{title}" th:href="'/blog/article/'+${id} ">标题</a>
 			</h3>
 			<h4 class="am-article-meta blog-meta">
 				<a href="" 
-				   th:href="@{/date/{time}(time=*{#calendars.format(postDate,'yyyy-MM-dd')})}">
+				  th:href="'/date/'+ *{#calendars.format(postDate,'yyyy-MM-dd')}" >
 				      <span class="am-icon-calendar"></span>
                       <span th:text="${ #calendars.format(post.postDate,'yyyy-MMMM-dd')}">日期 </span>
 				</a>
 				  
-				<a href=""  th:href="@{/category/{value}(value=*{category})}">
+				<a href=""  th:href="'/category/'+ *{category} ">
 				  <span class="am-icon-folder"></span>
 				  <span th:text="*{category}"> 分类 </span>
 				</a>
 				  
-				<a href=""  th:href="@{/tag/{value}(value=*{tag})}">
+				<a href=""  th:href="'/tag/'+*{tag}">
 				    <span class="am-icon-tag"></span>
 				    <span th:text="*{tag}" > 标签 </span>
 				</a> 
@@ -37,8 +37,20 @@
 
 			<div class="am-g blog-content" id="blog-chn" th:utext="*{context}">
 			</div>
-
 		</article>
+		<!--高速版-->
+		<div id="SOHUCS"  th:attr="sid=${post.id}"></div>
+		
+		<script charset="utf-8" type="text/javascript"
+			src="http://changyan.sohu.com/upload/changyan.js"></script>
+		<script type="text/javascript">
+			window.changyan.api.config({
+				appid : 'cyt1Gb7vP',
+				conf : 'prod_de70433a98cfd969fc283743b3494e6a',
+				cyanTitle : '我来说两句'
+			});
+		</script>
+		
 		<script src="../../amazeui/assets/js/jquery.min.js"	th:href="@{/amazeui/assets/js/jquery.min.js}"></script>
 		<script src="../web/js/blog/article2.js"
 			th:src="@{/web/js/blog/article2.js}"></script>

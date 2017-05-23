@@ -15,9 +15,11 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.pong.blog.common.data.mongo.entity.Post;
 import com.pong.blog.common.service.BlogPostService;
+import com.pong.blog.common.service.CommentService;
 import com.pong.blog.dto.BlogDto;
 
 /**
@@ -35,8 +37,10 @@ public class BlogController {
     // private BlogService blogService;
     @Autowired
     private BlogPostService blogPostService;
+    @Autowired
+    private CommentService commentService;
 
-    @RequestMapping(value = {"","/index"}, method = RequestMethod.GET)
+    @RequestMapping(value = { "", "/index" }, method = RequestMethod.GET)
     public String index(BlogDto dto, ModelMap map) {
         logger.info("blog 首页=======", dto);
 
@@ -52,24 +56,25 @@ public class BlogController {
         logger.info("article 信息=======id:{}", id);
         Post post = blogPostService.getPost(id);
         map.put("post", post);
-        
+
         if (StringUtils.isNotBlank(post.getContext()) && StringUtils.isNotBlank(post.getContextEng())) {
             return "blog/article";
         }
-        
+
         return "blog/article2";
     }
 
     @RequestMapping(value = "/author/{name}", method = RequestMethod.GET)
     public String author(@PathVariable String name, BlogDto dto, ModelMap map) {
         logger.info("author 信息=======id:{}", name);
-        if (dto == null) {
-            dto = new BlogDto();
-            dto.setStart(0);
-            dto.setLength(10);
-        }
         Page<Post> posts = blogPostService.getPostsByAuthor(name, dto.getStart(), dto.getLength());
         map.put("posts", posts.getContent());
         return "blog/index";
+    }
+
+    @RequestMapping(value = "/comment/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public Object comment(@PathVariable String id, BlogDto dto) {
+        return commentService.queryByPostId(id, dto.getStart(), dto.getLength());
     }
 }

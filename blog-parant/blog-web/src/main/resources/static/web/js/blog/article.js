@@ -1,5 +1,6 @@
 $(document).ready(function() {
 	
+
 	$("#chn").on('click', function() {
 		$("#blog-eng").css("display","none");
 		$("#blog-chn").css("display","block");

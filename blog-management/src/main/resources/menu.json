@@ -1,0 +1,3 @@
+{"_id":"4824be6d-6d18-4d13-8b84-624b2daa1fcc","_class":"com.pong.blog.common.data.mongo.entity.Menu","name":"Blog","code":"blog","url":"/blog/index","icon":"am-icon-home"}
+{"_id":"a8f2afd6-0450-47b8-9df3-e38764f1b66e","_class":"com.pong.blog.common.data.mongo.entity.Menu","name":"Menu","code":"menu","url":"/menu/index","icon":"am-icon-home"}
+{"_id":"71eec435-9ae8-4a76-bc0f-17eee804cb22","_class":"com.pong.blog.common.data.mongo.entity.Menu","name":"User","code":"user","url":"/user/index","icon":"am-icon-users"}

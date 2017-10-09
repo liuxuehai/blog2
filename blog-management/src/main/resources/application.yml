@@ -25,10 +25,10 @@ spring:
              enabled: true
    data:
        mongodb:
-             host: 172.20.20.100
+             host: mongo1.blog.com
              port: 27017
              database: blog
-             uri: mongodb://172.20.20.100:27017/blog
+             uri: mongodb://mongo1.blog.com:27017/blog
 eureka:
    client:
          registerWithEureka: false 

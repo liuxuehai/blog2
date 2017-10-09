@@ -1,0 +1,32 @@
+spring:
+   application: 
+       name: blog-spider
+   datasource:
+       driverClassName: com.mysql.jdbc.Driver
+       url: jdbc:mysql://172.20.20.100/blog?characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useSSL=false
+       username: root
+       password: 123456
+    
+eureka:
+   client:
+         serviceUrl:
+             defaultZone: http://peer1.xujin.org:8761/eureka/
+   instance:
+         appname: blog-spider
+         prefer-ip-address: true
+---
+spring:
+    profiles: spider-01
+server:
+    port: 8090 
+
+---
+spring:
+    profiles: spider-02
+server:
+    port: 8091 
+    
+    
+    
+    
+    

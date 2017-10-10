@@ -8,17 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import com.pong.blog.spider.actor.WorkerActor;
 import com.pong.blog.spider.extension.SpringExtension;
 
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
-import akka.pattern.Patterns;
-import akka.util.Timeout;
-import scala.concurrent.Await;
-import scala.concurrent.Future;
 import scala.concurrent.duration.Duration;
-import scala.concurrent.duration.FiniteDuration;
 
 @Component
 public class Runner implements CommandLineRunner {
@@ -34,20 +28,17 @@ public class Runner implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		try {
+			logger.info("定时任务开始");
+
 			ActorRef workerActor = actorSystem.actorOf(springExtension.props("workerActor"), "worker-actor");
-
-			workerActor.tell(new WorkerActor.Request(), null);
-			workerActor.tell(new WorkerActor.Request(), null);
-			workerActor.tell(new WorkerActor.Request(), null);
-
-			FiniteDuration duration = FiniteDuration.create(1, TimeUnit.SECONDS);
-			Future<Object> awaitable = Patterns.ask(workerActor, new WorkerActor.Response(),
-					Timeout.durationToTimeout(duration));
-
-			logger.info("Response: " + Await.result(awaitable, duration));
+			actorSystem.scheduler().schedule(Duration.create(1, TimeUnit.SECONDS),
+					Duration.create(1, TimeUnit.SECONDS), new Runnable() {
+						public void run() {
+							workerActor.tell("ping", null);
+						}
+					}, actorSystem.dispatcher());
 		} finally {
-			actorSystem.terminate();
-			Await.result(actorSystem.whenTerminated(), Duration.Inf());
+			logger.info("定时任务结束");
 		}
 	}
 
